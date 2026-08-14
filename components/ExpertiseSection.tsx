@@ -74,17 +74,17 @@ export default function ExpertiseSection() {
         </div>
       </div>
 
-      {/* Full-Bleed Edge-to-Edge Carousel Stage - Equal Height Cards (Center 1320x661, Left 1174x661, Right 1175x661) */}
+      {/* Full-Bleed Edge-to-Edge Carousel Stage - Exact Green Box Proportions (Center 1180px, Side Previews 320px) */}
       <div className="w-full relative overflow-hidden py-4">
-        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 w-full max-w-[1920px] mx-auto px-2 sm:px-6">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 w-full max-w-[1920px] mx-auto px-2 sm:px-4">
           
-          {/* Left Card */}
+          {/* Left Card - Exact Green Rectangle Width (320px) */}
           <motion.div
             layout
             onClick={handlePrev}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative hidden sm:block w-[14%] lg:w-[16%] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer opacity-90 hover:opacity-100 transition-opacity"
+            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
           >
             <AnimatePresence mode="wait">
               {items[leftIndex].type === 'red-card' ? (
@@ -127,10 +127,10 @@ export default function ExpertiseSection() {
             </button>
           </motion.div>
 
-          {/* Center Main Active Card - Expanded Width matching Green Box Screenshot */}
+          {/* Center Main Active Card - Exact Green Rectangle Width (1180px) */}
           <motion.div
             layout
-            className="relative w-full sm:w-[80%] lg:w-[74%] max-w-[1320px] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
+            className="relative w-full sm:w-[58%] lg:w-[56%] max-w-[1180px] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
           >
             <AnimatePresence mode="wait">
               {items[activeIndex].type === 'red-card' ? (
@@ -159,13 +159,13 @@ export default function ExpertiseSection() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Right Card */}
+          {/* Right Card - Exact Green Rectangle Width (320px) */}
           <motion.div
             layout
             onClick={handleNext}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative hidden sm:block w-[14%] lg:w-[16%] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer opacity-90 hover:opacity-100 transition-opacity"
+            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[400px] sm:h-[500px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
           >
             <AnimatePresence mode="wait">
               {items[rightIndex].type === 'red-card' ? (

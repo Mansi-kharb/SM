@@ -42,8 +42,8 @@ export default function InteractiveProjectShowcase({
           </a>
         </div>
 
-        {/* 3D Perspective Track matching Figma screenshot diagonal cascade */}
-        <div className="relative w-full h-[620px] md:h-[680px] my-2 flex items-center justify-end [perspective:2200px] [perspective-origin:65%_45%] overflow-visible pr-4 md:pr-12">
+        {/* 3D Perspective Track for Desktop (hidden on mobile, flex on sm+) */}
+        <div className="hidden sm:flex relative w-full h-[580px] md:h-[680px] my-2 items-center justify-end [perspective:2200px] [perspective-origin:65%_45%] overflow-visible pr-4 md:pr-12">
           <div className="relative w-full max-w-6xl h-full [transform-style:preserve-3d]">
             {list.map((item, idx) => {
               if (!item.id) return null;
@@ -132,6 +132,30 @@ export default function InteractiveProjectShowcase({
               );
             })}
           </div>
+        </div>
+
+        {/* Horizontal Mobile Swipeable Carousel (Shown only on small screens < sm) */}
+        <div className="sm:hidden flex overflow-x-auto gap-4 py-6 px-4 no-scrollbar snap-x snap-mandatory">
+          {list.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => onSelectProject(item.id)}
+              className="relative w-[280px] h-[200px] flex-shrink-0 snap-center rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 text-white">
+                <span className="text-[10px] font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2 py-0.5 rounded w-fit mb-1">
+                  {item.category}
+                </span>
+                <h4 className="text-sm font-medium">{item.title}</h4>
+                <p className="text-[11px] opacity-80">{item.location}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

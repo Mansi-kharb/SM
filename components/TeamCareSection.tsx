@@ -3,8 +3,8 @@ import React from 'react';
 export default function TeamCareSection() {
   return (
     <section className="bg-white pt-6 md:pt-10 pb-12 md:pb-16 px-4 sm:px-6 md:px-8">
-      {/* Outer Grey Card - Exact Figma Dimension: 1720px x 745px */}
-      <div className="w-full max-w-[1720px] min-h-[680px] lg:h-[745px] mx-auto bg-[#f4f4f4] rounded-[24px] md:rounded-[36px] p-8 sm:p-12 md:p-14 lg:p-16 flex items-center relative overflow-hidden">
+      {/* Outer Grey Card - Square Sharp Edges (rounded-none) */}
+      <div className="w-full max-w-[1720px] min-h-[680px] lg:h-[745px] mx-auto bg-[#f4f4f4] rounded-none p-8 sm:p-12 md:p-14 lg:p-16 flex items-center relative overflow-hidden">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Content Column */}
@@ -43,13 +43,13 @@ export default function TeamCareSection() {
             </div>
           </div>
 
-          {/* Right Image Container - Exact Figma Dimension: 991px x 661px */}
+          {/* Right Image Container - Soft Rounded Corners (rounded-[24px] md:rounded-[32px]) */}
           <div className="lg:col-span-7 flex justify-end">
-            <div className="w-full max-w-[991px] h-[400px] sm:h-[500px] md:h-[580px] lg:h-[661px] overflow-hidden rounded-[20px] md:rounded-[28px] shadow-sm">
+            <div className="w-full max-w-[991px] h-[400px] sm:h-[500px] md:h-[580px] lg:h-[661px] overflow-hidden rounded-[24px] md:rounded-[32px] shadow-sm">
               <img
                 src="/images/about-1.png"
                 alt="Team that cares"
-                className="w-full h-full object-cover rounded-[20px] md:rounded-[28px]"
+                className="w-full h-full object-cover rounded-[24px] md:rounded-[32px]"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop";
                 }}

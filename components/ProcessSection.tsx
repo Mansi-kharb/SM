@@ -146,9 +146,9 @@ export default function ProcessSection() {
           {/* Steps 03 & 04 (Cols 1-8) */}
           <div className="lg:col-span-8 flex flex-col">
             
-            {/* Timeline Track 2 ending exactly at step 04 badge (no line after 04) */}
+            {/* Timeline Track 2 connecting 03 and 04 cleanly without blank space */}
             <div className="relative flex items-center h-[50px] w-full mb-4">
-              <div className="absolute left-0 right-1/2 h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden pr-6">
+              <div className="absolute left-[25px] right-[calc(50%-25px)] h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-2" width="20" height="40.26" patternUnits="userSpaceOnUse">

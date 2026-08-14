@@ -1,0 +1,97 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+export default function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Section is visible - play video
+          video.play().catch(() => {
+            // Autoplay might be blocked, but we tried
+          });
+        } else {
+          // Section is not visible - pause video
+          video.pause();
+          video.currentTime = 0; // Reset to start
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="relative h-screen flex items-center justify-center bg-gray-100 pt-20 overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/images/sec_ki_video_i_want_gnerate.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/20"></div>
+
+      {/* Content - Left Bottom Positioned - Exact Figma Specs: Title 522px x 106px, Paragraph 427px x 105px, Button 199px x 22.56px */}
+      <div className="absolute bottom-16 md:bottom-20 left-6 sm:left-12 md:left-16 z-10 text-white">
+        
+        {/* Headline Box: 522px x 106px */}
+        <h1 className="font-['Satoshi',sans-serif] text-4xl sm:text-5xl md:text-[52px] font-light leading-[1.02] tracking-tight text-white mb-6 text-left max-w-[522px]">
+          We create environments where ideas grow
+        </h1>
+
+        {/* Paragraph Box: 427px x 105px */}
+        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-8 text-left max-w-[427px]">
+          "Driven by action, defined by experience — we are a collective of infinite minds
+          shaping one world. Our spaces are not just built; they are thoughtfully crafted
+          environments that reflect who we are, what we do best, and the lasting promise
+          we deliver to everyone who steps into them."
+        </p>
+
+        {/* Contact Button Box: 199px x 22.56px linking to Footer #contact-form */}
+        <a
+          href="#contact-form"
+          className="inline-flex items-center gap-2.5 w-[199px] h-[22.56px] group cursor-pointer"
+        >
+          {/* Black Triangle Icon ▲ */}
+          <div className="w-[12px] h-[14px] flex items-center justify-center flex-shrink-0">
+            <svg
+              className="w-full h-full text-black fill-current"
+              viewBox="0 0 13.61 17.43"
+            >
+              <polygon points="6.805,0 0,17.43 13.61,17.43" />
+            </svg>
+          </div>
+
+          <span className="font-['Satoshi',sans-serif] text-sm font-medium uppercase tracking-wider text-black group-hover:text-white transition-colors whitespace-nowrap">
+            CONTACT OUR TEAM
+          </span>
+        </a>
+      </div>
+    </section>
+  );
+}

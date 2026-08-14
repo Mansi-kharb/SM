@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VG Design - Interior Design Website
 
-## Getting Started
+A modern, responsive website for VG Design interior design company built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Features
+
+- 🎨 Modern UI with clean design
+- 📱 Fully responsive design
+- 🖼️ Project showcase with 4-column grid
+- 📧 Contact form with SMTP email integration
+- ⚡ Fast performance with Next.js
+- 🎯 SEO friendly
+
+## Quick Start
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Set Up Email (SMTP)
+
+Create `.env.local` file:
+
+```
+SMTP_EMAIL=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+RECIPIENT_EMAIL=contact@yourdomain.com
+```
+
+**Gmail Setup:**
+1. Go to [Google Account Security](https://myaccount.google.com/security)
+2. Enable 2-step verification
+3. Generate [App Password](https://myaccount.google.com/apppasswords) for Mail
+4. Use the password in `.env.local`
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── api/contact/route.ts       # Email API
+│   ├── projects/[id]/page.tsx     # Project detail
+│   └── page.tsx                   # Home page
+├── components/
+│   ├── Header.tsx
+│   ├── HeroSection.tsx
+│   ├── ServicesSection.tsx
+│   ├── ProjectsGridSection.tsx
+│   ├── AboutSection.tsx
+│   ├── ContactSection.tsx
+│   └── ContactForm.tsx
+├── public/
+│   ├── images/                    # Add your images here
+│   └── data/projects.json         # Projects data
+└── .env.local                     # Environment variables
+```
+
+## Images Setup
+
+Add your images to `public/images/`:
+
+- `hero-archway.jpg` - Hero section
+- `about-1.jpg` to `about-4.jpg` - About section
+- `project-1.jpg` to `project-12.jpg` - Project thumbnails
+
+## Update Projects
+
+Edit `public/data/projects.json`:
+
+```json
+{
+  "id": 1,
+  "title": "Project Name",
+  "location": "City",
+  "category": "Residential",
+  "budget": "₹X-Y Lakhs",
+  "duration": "X months",
+  "image": "/images/project-1.jpg",
+  "details": "Description"
+}
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+```bash
+npm run build
+npm run start
+```
+
+Or use [Vercel Platform](https://vercel.com)
+
+1. Push to GitHub
+2. Import on Vercel
+3. Add environment variables
+4. Deploy ✅
+
+## Customization
+
+- **Colors**: Edit `tailwind.config.ts`
+- **Content**: Update component files
+- **Fonts**: Modify `app/layout.tsx`
+- **Email**: Change email templates in `app/api/contact/route.ts`
+
+## Troubleshooting
+
+**Email not working?**
+- Verify `.env.local` values
+- Check Gmail App Password
+- Check spam folder
+- Ensure 2-step verification is on
+
+**Images not showing?**
+- Ensure images are in `public/images/`
+- Check file names match in JSON
+- Clear browser cache
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Docs](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Nodemailer](https://nodemailer.com)

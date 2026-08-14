@@ -1,69 +1,164 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect } from 'react';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import PhilosophySection from '@/components/PhilosophySection';
+import ProcessSection from '@/components/ProcessSection';
+import InteractiveProjectShowcase from '@/components/InteractiveProjectShowcase';
+import ProjectStory from '@/components/ProjectStory';
+import ExpertiseSection from '@/components/ExpertiseSection';
+import AboutSection from '@/components/AboutSection';
+import TeamCareSection from '@/components/TeamCareSection';
+import BlogSection from '@/components/BlogSection';
+import Footer from '@/components/Footer';
+import { ProjectData } from '@/components/ProjectCard';
+
+const DEFAULT_PROJECTS: ProjectData[] = [
+  {
+    id: 1,
+    title: "Gold's Gym Center",
+    location: "Mumbai",
+    category: "Gym",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop",
+    fallback: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1200&auto=format&fit=crop"
+    ],
+    details: "A state-of-the-art commercial gym facility engineered for optimal workout flow, acoustic isolation, custom lighting racks, and durable rubberized floor zoning.",
+  },
+  {
+    id: 2,
+    title: "The Gourmet Bistro",
+    location: "Delhi",
+    category: "Restaurant",
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
+    fallback: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop"
+    ],
+    details: "An ambient restaurant design featuring custom teak dining booths, warm architectural spotlighting, acoustic ceiling baffles, and open kitchen view integration.",
+  },
+  {
+    id: 3,
+    title: "Luxe Salon & Spa",
+    location: "Mumbai",
+    category: "Saloon",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
+    fallback: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=1200&auto=format&fit=crop"
+    ],
+    details: "A sophisticated hair & beauty salon interior featuring custom illuminated vanity mirrors, velvet plush seating, marble reception counter, and tranquil spa treatment suites.",
+  },
+  {
+    id: 4,
+    title: "Brew & Bean Specialty Cafe",
+    location: "Bangalore",
+    category: "Cafe",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop",
+    fallback: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200&auto=format&fit=crop"
+    ],
+    details: "A warm and inviting specialty cafe design with terrazzo bar top, custom espresso bar layout, oak seating benches, and sunlit window nooks.",
+  },
+  {
+    id: 5,
+    title: "Modern Corporate Office",
+    location: "Gurgaon",
+    category: "Office",
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    fallback: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop"
+    ],
+    details: "A futuristic office environment featuring soundproof glass meeting rooms, biophilic breakrooms, ergonomic workstations, and integrated smart lighting systems.",
+  },
+];
 
 export default function Home() {
+  const [projects, setProjects] = useState<ProjectData[]>(DEFAULT_PROJECTS);
+  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Load projects from JSON
+    fetch('/data/projects.json')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.projects) {
+          setProjects(data.projects);
+        }
+      })
+      .catch((err) => console.error('Failed to load projects:', err));
+  }, []);
+
+  const handleSelectProject = (projectId: number) => {
+    setActiveProjectId(projectId);
+    // Smooth scroll down to the unfolded Project Story section
+    setTimeout(() => {
+      const storyElem = document.getElementById('project-story-section');
+      if (storyElem) {
+        storyElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  const handleSelectNextProject = (nextProjectId: number) => {
+    setActiveProjectId(nextProjectId);
+  };
+
+  const handleCloseStory = () => {
+    setActiveProjectId(null);
+    const showcaseElem = document.getElementById('selected-projects');
+    if (showcaseElem) {
+      showcaseElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const activeProject = projects.find((p) => p.id === activeProjectId) || null;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="bg-white min-h-screen text-slate-900 font-sans antialiased">
+      <Header />
+      <HeroSection />
+      <PhilosophySection />
+      
+      {/* About Us Section right before Our Projects */}
+      <AboutSection />
+
+      {/* 3D Offset Interactive Project Showcase */}
+      <InteractiveProjectShowcase
+        projects={projects}
+        activeProjectId={activeProjectId}
+        onSelectProject={handleSelectProject}
+      />
+
+      {/* In-Page Unfolding Project Story Series */}
+      {activeProject && (
+        <ProjectStory
+          project={activeProject}
+          allProjects={projects}
+          onSelectNextProject={handleSelectNextProject}
+          onCloseStory={handleCloseStory}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      )}
+
+      <ProcessSection />
+      <ExpertiseSection />
+      <TeamCareSection />
+      <BlogSection />
+      <Footer />
+    </main>
   );
 }

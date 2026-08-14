@@ -127,10 +127,10 @@ export default function ExpertiseSection() {
             </button>
           </motion.div>
 
-          {/* Center Main Active Card - Perfectly Centered in Viewport */}
+          {/* Center Main Active Card - Perfectly Centered in Viewport with Both Navigation Arrows */}
           <motion.div
             layout
-            className="relative w-full sm:w-[60%] lg:w-[54%] max-w-[1050px] h-[400px] sm:h-[500px] md:h-[620px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
+            className="relative w-full sm:w-[68%] lg:w-[62%] max-w-[1180px] h-[400px] sm:h-[500px] md:h-[620px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
           >
             <AnimatePresence mode="wait">
               {items[activeIndex].type === 'red-card' ? (
@@ -158,25 +158,27 @@ export default function ExpertiseSection() {
               )}
             </AnimatePresence>
 
-            {/* Mobile Arrow Navigation */}
-            <div className="sm:hidden absolute inset-0 flex items-center justify-between px-3 pointer-events-none z-10">
-              <button
-                onClick={handlePrev}
-                className="w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            {/* Left Arrow Button on Center Card */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-white/30 backdrop-blur-md hover:bg-white/60 text-white hover:text-slate-900 flex items-center justify-center transition-all z-30 shadow-xl group-hover:scale-110 cursor-pointer"
+              aria-label="Previous card"
+            >
+              <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Right Arrow Button on Center Card */}
+            <button
+              onClick={handleNext}
+              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-white/30 backdrop-blur-md hover:bg-white/60 text-white hover:text-slate-900 flex items-center justify-center transition-all z-30 shadow-xl group-hover:scale-110 cursor-pointer"
+              aria-label="Next card"
+            >
+              <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </motion.div>
 
           {/* Right Card - Scaled side preview */}

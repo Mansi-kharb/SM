@@ -74,9 +74,9 @@ export default function ExpertiseSection() {
         </div>
       </div>
 
-      {/* Full-Bleed Responsive Edge-to-Edge Carousel Stage */}
-      <div className="w-full relative overflow-hidden">
-        <div className="flex items-center justify-center gap-4 md:gap-6 w-full max-w-[1920px] h-[480px] sm:h-[580px] md:h-[661px] mx-auto px-2 md:px-6">
+      {/* Full-Bleed Edge-to-Edge Carousel Stage (Exact Center 1180px x 661px, Side Cards 1174px x 661px) */}
+      <div className="w-full relative overflow-x-hidden py-4">
+        <div className="flex items-center justify-center gap-6 min-w-[2800px] h-[520px] md:h-[661px] mx-auto -translate-x-[0px]">
           
           {/* Left Card */}
           <motion.div
@@ -84,7 +84,7 @@ export default function ExpertiseSection() {
             onClick={handlePrev}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative flex-1 max-w-[280px] sm:max-w-[400px] md:max-w-[600px] h-full flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer hidden sm:block"
+            className="relative w-[800px] lg:w-[1174px] h-[520px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer"
           >
             <AnimatePresence mode="wait">
               {items[leftIndex].type === 'red-card' ? (
@@ -118,19 +118,19 @@ export default function ExpertiseSection() {
                 e.stopPropagation();
                 handlePrev();
               }}
-              className="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md hover:bg-white/40 text-white flex items-center justify-center transition-colors z-10"
+              className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md hover:bg-white/40 text-white flex items-center justify-center transition-colors z-10"
               aria-label="Previous card"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
           </motion.div>
 
-          {/* Center Main Active Card */}
+          {/* Center Main Active Card (Exact 1180px x 661px) */}
           <motion.div
             layout
-            className="relative flex-[2.5] max-w-[1180px] w-full h-full flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-lg"
+            className="relative w-[90vw] max-w-[1180px] h-[520px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20"
           >
             <AnimatePresence mode="wait">
               {items[activeIndex].type === 'red-card' ? (
@@ -162,7 +162,7 @@ export default function ExpertiseSection() {
             <div className="sm:hidden absolute inset-0 flex items-center justify-between px-3 pointer-events-none z-10">
               <button
                 onClick={handlePrev}
-                className="w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
+                className="w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -170,7 +170,7 @@ export default function ExpertiseSection() {
               </button>
               <button
                 onClick={handleNext}
-                className="w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
+                className="w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center pointer-events-auto"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -185,7 +185,7 @@ export default function ExpertiseSection() {
             onClick={handleNext}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative flex-1 max-w-[280px] sm:max-w-[400px] md:max-w-[600px] h-full flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer hidden sm:flex flex-col justify-center"
+            className="relative w-[800px] lg:w-[1175px] h-[520px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-center"
           >
             <AnimatePresence mode="wait">
               {items[rightIndex].type === 'red-card' ? (
@@ -219,10 +219,10 @@ export default function ExpertiseSection() {
                 e.stopPropagation();
                 handleNext();
               }}
-              className="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md hover:bg-white/40 text-white flex items-center justify-center transition-colors z-10"
+              className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md hover:bg-white/40 text-white flex items-center justify-center transition-colors z-10"
               aria-label="Next card"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>

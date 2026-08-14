@@ -127,7 +127,7 @@ export default function ExpertiseSection() {
             </button>
           </motion.div>
 
-          {/* Center Main Active Card - Perfectly Centered in Viewport with Both Navigation Arrows */}
+          {/* Center Main Active Card */}
           <motion.div
             layout
             className="relative w-full sm:w-[68%] lg:w-[62%] max-w-[1180px] h-[400px] sm:h-[500px] md:h-[620px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
@@ -157,28 +157,6 @@ export default function ExpertiseSection() {
                 />
               )}
             </AnimatePresence>
-
-            {/* Left Arrow Button on Center Card */}
-            <button
-              onClick={handlePrev}
-              className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-white/30 backdrop-blur-md hover:bg-white/60 text-white hover:text-slate-900 flex items-center justify-center transition-all z-30 shadow-xl group-hover:scale-110 cursor-pointer"
-              aria-label="Previous card"
-            >
-              <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Right Arrow Button on Center Card */}
-            <button
-              onClick={handleNext}
-              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-white/30 backdrop-blur-md hover:bg-white/60 text-white hover:text-slate-900 flex items-center justify-center transition-all z-30 shadow-xl group-hover:scale-110 cursor-pointer"
-              aria-label="Next card"
-            >
-              <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </motion.div>
 
           {/* Right Card - Scaled side preview */}

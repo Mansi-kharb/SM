@@ -50,7 +50,7 @@ export default function Header() {
     <header
       className={`fixed w-full top-0 z-50 transition-all duration-500 font-['Satoshi',sans-serif] ${
         isScrolled
-          ? 'bg-white/85 backdrop-blur-xl border-b border-slate-200/80 py-3 shadow-sm'
+          ? 'bg-white/90 backdrop-blur-xl border-none py-3 shadow-sm'
           : 'bg-gradient-to-b from-black/60 via-black/20 to-transparent backdrop-blur-xs py-5'
       }`}
     >

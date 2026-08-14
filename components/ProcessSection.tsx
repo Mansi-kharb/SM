@@ -47,9 +47,9 @@ export default function ProcessSection() {
           {/* Steps 01 & 02 (Cols 5-12) */}
           <div className="lg:col-span-8 flex flex-col">
             
-            {/* Timeline Track 1 - Exact Figma Specs: 405.95px x 40.26px with Badges 50px x 50px */}
+            {/* Timeline Track 1 - Full width pattern extending from badge 01 to the right edge */}
             <div className="relative flex items-center h-[50px] w-full mb-4">
-              <div className="absolute left-0 right-0 h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
+              <div className="absolute left-[25px] right-0 h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-1" width="20" height="40.26" patternUnits="userSpaceOnUse">
@@ -146,9 +146,9 @@ export default function ProcessSection() {
           {/* Steps 03 & 04 (Cols 1-8) */}
           <div className="lg:col-span-8 flex flex-col">
             
-            {/* Timeline Track 2 connecting 03 and 04 cleanly without blank space */}
+            {/* Timeline Track 2 extending from left edge to badge 04 */}
             <div className="relative flex items-center h-[50px] w-full mb-4">
-              <div className="absolute left-[25px] right-[calc(50%-25px)] h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
+              <div className="absolute left-0 right-[calc(50%-25px)] h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-2" width="20" height="40.26" patternUnits="userSpaceOnUse">

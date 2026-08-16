@@ -47,9 +47,9 @@ export default function ProcessSection() {
           {/* Steps 01 & 02 (Cols 5-12) */}
           <div className="lg:col-span-8 flex flex-col">
             
-            {/* Timeline Track 1 - Full width pattern extending from badge 01 to the right edge */}
-            <div className="relative flex items-center h-[50px] w-full mb-4">
-              <div className="absolute left-[25px] right-0 h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
+            {/* Timeline Track 1 - Side by Side 2-Column on Mobile & Desktop */}
+            <div className="relative flex items-center h-[40px] sm:h-[50px] w-full mb-3 sm:mb-4">
+              <div className="absolute left-[20px] sm:left-[25px] right-0 h-[32px] sm:h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-1" width="20" height="40.26" patternUnits="userSpaceOnUse">
@@ -63,54 +63,54 @@ export default function ProcessSection() {
                 </svg>
               </div>
 
-              <div className="relative z-10 grid grid-cols-2 gap-8 sm:gap-12 w-full">
+              <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-10 w-full">
                 <div className="flex items-center">
-                  <span className="w-[50px] h-[50px] bg-black text-white text-sm font-mono font-medium rounded-[14px] flex items-center justify-center tracking-wider shadow-md">
+                  <span className="w-[36px] sm:w-[50px] h-[36px] sm:h-[50px] bg-black text-white text-[11px] sm:text-sm font-mono font-medium rounded-[10px] sm:rounded-[14px] flex items-center justify-center tracking-wider shadow-md">
                     01
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-[50px] h-[50px] bg-black text-white text-sm font-mono font-medium rounded-[14px] flex items-center justify-center tracking-wider shadow-md">
+                  <span className="w-[36px] sm:w-[50px] h-[36px] sm:h-[50px] bg-black text-white text-[11px] sm:text-sm font-mono font-medium rounded-[14px] flex items-center justify-center tracking-wider shadow-md">
                     02
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Titles & Paragraphs 01 & 02 - Exact Figma Specs: Discover (94px x 24px), Define (71px x 24px), Paragraphs (266px x 48px) */}
-            <div className="grid grid-cols-2 gap-8 sm:gap-12 mb-6">
+            {/* Titles & Paragraphs 01 & 02 */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-10 mb-4 sm:mb-6">
               <div>
-                <h3 className="font-['Satoshi',sans-serif] text-[18px] font-medium text-slate-900 mb-1 max-w-[94px]">
+                <h3 className="font-['Satoshi',sans-serif] text-sm sm:text-[18px] font-medium text-slate-900 mb-0.5 sm:mb-1">
                   {steps[0].title}
                 </h3>
-                <p className="font-['Satoshi',sans-serif] text-xs sm:text-[13px] text-slate-500 font-light leading-relaxed max-w-[266px]">
+                <p className="font-['Satoshi',sans-serif] text-[10px] sm:text-[13px] text-slate-500 font-light leading-snug sm:leading-relaxed max-w-[266px]">
                   {steps[0].description}
                 </p>
               </div>
 
               <div>
-                <h3 className="font-['Satoshi',sans-serif] text-[18px] font-medium text-slate-900 mb-1 max-w-[71px]">
+                <h3 className="font-['Satoshi',sans-serif] text-sm sm:text-[18px] font-medium text-slate-900 mb-0.5 sm:mb-1">
                   {steps[1].title}
                 </h3>
-                <p className="font-['Satoshi',sans-serif] text-xs sm:text-[13px] text-slate-500 font-light leading-relaxed max-w-[266px]">
+                <p className="font-['Satoshi',sans-serif] text-[10px] sm:text-[13px] text-slate-500 font-light leading-snug sm:leading-relaxed max-w-[266px]">
                   {steps[1].description}
                 </p>
               </div>
             </div>
 
-            {/* Cards 01 & 02 - Exact Figma Card Box Specs: 430px x 550px */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-10">
-              {/* Card 1: Geometric Abstract Poster (430px x 550px) */}
-              <div className="relative w-full max-w-[430px] aspect-[430/550] rounded-[24px] md:rounded-[32px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 p-6 flex flex-col justify-between shadow-sm">
-                <div className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[#0f5339] z-20 shadow-sm" />
-                <div className="absolute inset-0 flex items-center justify-center p-4">
+            {/* Cards 01 & 02 - Side by Side 2-Column Layout */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-10">
+              {/* Card 1: Geometric Abstract Poster */}
+              <div className="relative w-full aspect-[430/550] rounded-xl sm:rounded-[28px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 p-3 sm:p-6 flex flex-col justify-between shadow-sm">
+                <div className="absolute top-3 right-3 sm:top-6 sm:right-6 w-5 h-5 sm:w-9 sm:h-9 rounded-full bg-[#0f5339] z-20 shadow-sm" />
+                <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4">
                   <svg className="w-full h-full" viewBox="0 0 430 550" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                      <pattern id="card-tri-bg" width="30" height="30" patternUnits="userSpaceOnUse">
+                      <pattern id="card-tri-bg-m" width="30" height="30" patternUnits="userSpaceOnUse">
                         <path d="M 0 30 L 15 0 L 30 30" fill="none" stroke="#e2e8f0" strokeWidth="1" />
                       </pattern>
                     </defs>
-                    <rect width="430" height="550" fill="url(#card-tri-bg)" />
+                    <rect width="430" height="550" fill="url(#card-tri-bg-m)" />
                     <g opacity="0.85">
                       <polygon points="215,80 140,200 290,200" fill="#cbd5e1" opacity="0.9" />
                       <polygon points="160,150 250,300 110,320" fill="#99f6e4" opacity="0.85" />
@@ -126,12 +126,12 @@ export default function ProcessSection() {
                 </div>
               </div>
 
-              {/* Card 2: Luxury Villa Pool Photo (430px x 550px) */}
-              <div className="relative w-full max-w-[430px] aspect-[430/550] rounded-[24px] md:rounded-[32px] overflow-hidden bg-slate-100 border border-slate-200/60 shadow-sm group">
+              {/* Card 2: Luxury Villa Pool Photo */}
+              <div className="relative w-full aspect-[430/550] rounded-xl sm:rounded-[28px] overflow-hidden bg-slate-100 border border-slate-200/60 shadow-sm group">
                 <img
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop"
                   alt="Luxury Modern Architecture Pool Villa"
-                  className="w-full h-full object-cover rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover rounded-xl sm:rounded-[28px] group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
             </div>

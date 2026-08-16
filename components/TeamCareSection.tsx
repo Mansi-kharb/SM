@@ -43,13 +43,13 @@ export default function TeamCareSection() {
             </div>
           </div>
 
-          {/* Right Image Container - Soft Rounded Corners (rounded-[24px] md:rounded-[32px]) */}
+          {/* Right Image Container - Soft Rounded Corners & Reduced Mobile Height (260px) */}
           <div className="lg:col-span-7 flex justify-end">
-            <div className="w-full max-w-[991px] h-[400px] sm:h-[500px] md:h-[580px] lg:h-[661px] overflow-hidden rounded-[24px] md:rounded-[32px] shadow-sm">
+            <div className="w-full max-w-[991px] h-[260px] sm:h-[420px] md:h-[540px] lg:h-[661px] overflow-hidden rounded-[20px] sm:rounded-[28px] md:rounded-[32px] shadow-sm">
               <img
                 src="/images/about-1.png"
                 alt="Team that cares"
-                className="w-full h-full object-cover rounded-[24px] md:rounded-[32px]"
+                className="w-full h-full object-cover rounded-[20px] sm:rounded-[28px] md:rounded-[32px]"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop";
                 }}

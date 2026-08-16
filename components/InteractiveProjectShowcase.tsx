@@ -42,8 +42,8 @@ export default function InteractiveProjectShowcase({
           </a>
         </div>
 
-        {/* 3D Perspective Track for Desktop (hidden on mobile, flex on sm+) */}
-        <div className="hidden sm:flex relative w-full h-[580px] md:h-[680px] my-2 items-center justify-end [perspective:2200px] [perspective-origin:65%_45%] overflow-visible pr-4 md:pr-12">
+        {/* 3D Perspective Track for Mobile and Desktop */}
+        <div className="relative w-full h-[480px] sm:h-[580px] md:h-[680px] my-2 flex items-center justify-end [perspective:2200px] [perspective-origin:65%_45%] overflow-visible pr-2 sm:pr-4 md:pr-12">
           <div className="relative w-full max-w-6xl h-full [transform-style:preserve-3d]">
             {list.map((item, idx) => {
               if (!item.id) return null;
@@ -52,18 +52,18 @@ export default function InteractiveProjectShowcase({
               const isActive = activeProjectId === item.id;
 
               // Step rightward (+120px) and UPWARD (-65px) matching exact Figma screenshot
-              const stepX = slot * 125;
-              const stepY = slot * -55;
-              const stepZ = (list.length - slot) * 40;
+              const stepX = slot * 65; // Scaled for mobile responsiveness
+              const stepY = slot * -35;
+              const stepZ = (list.length - slot) * 30;
 
               // 3D rotation matching Figma screenshot
               const baseRotateX = 18;   
               const baseRotateY = -28; 
               const baseRotateZ = 4; 
 
-              const translateX = isHovered ? -80 : 0;
-              const translateY = isHovered ? -30 : 0;
-              const translateZ = isHovered ? 260 : 0;
+              const translateX = isHovered ? -40 : 0;
+              const translateY = isHovered ? -15 : 0;
+              const translateZ = isHovered ? 160 : 0;
 
               // Left-most card is at front (highest z-index), right-most steps behind into distance
               const restingZIndex = 100 + (list.length - slot) * 10;
@@ -76,8 +76,8 @@ export default function InteractiveProjectShowcase({
                   onClick={() => onSelectProject(item.id)}
                   className="absolute transition-all duration-400 ease-out cursor-pointer group"
                   style={{
-                    left: `calc(15% + ${stepX}px)`,
-                    bottom: `calc(10% - ${stepY}px)`,
+                    left: `calc(5% + ${stepX}px)`,
+                    bottom: `calc(15% - ${stepY}px)`,
                     transform: `translate3d(${translateX}px, ${translateY}px, ${stepZ + translateZ}px) rotateX(${baseRotateX}deg) rotateY(${baseRotateY}deg) rotateZ(${baseRotateZ}deg)`,
                     transformStyle: 'preserve-3d',
                     zIndex: isHovered ? 500 : restingZIndex,
@@ -85,7 +85,7 @@ export default function InteractiveProjectShowcase({
                 >
                   {/* Card Frame */}
                   <div
-                    className={`relative w-[280px] sm:w-[360px] md:w-[420px] h-[190px] sm:h-[230px] md:h-[260px] overflow-hidden transition-all duration-300 shadow-2xl border-[1.5px] border-slate-300 bg-white ${
+                    className={`relative w-[210px] sm:w-[360px] md:w-[420px] h-[140px] sm:h-[230px] md:h-[260px] overflow-hidden transition-all duration-300 shadow-2xl border-[1.5px] border-slate-300 bg-white ${
                       isHovered
                         ? 'shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] ring-4 ring-slate-900 scale-[1.05]'
                         : ''
@@ -107,24 +107,24 @@ export default function InteractiveProjectShowcase({
                     />
 
                     {/* Category Label */}
-                    <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-medium tracking-wider uppercase">
+                    <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-black/80 backdrop-blur-md text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded text-[8px] sm:text-[10px] font-medium tracking-wider uppercase">
                       {item.category}
                     </div>
                   </div>
 
                   {/* Info Box */}
                   <div
-                    className={`absolute top-4 left-[102%] transition-all duration-300 pointer-events-none whitespace-nowrap bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-slate-200 shadow-2xl ${
+                    className={`absolute top-2 left-[102%] transition-all duration-300 pointer-events-none whitespace-nowrap bg-white/95 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-slate-200 shadow-2xl ${
                       isHovered ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-3 scale-95'
                     }`}
                   >
-                    <span className="text-[10px] font-semibold text-slate-900 tracking-wider uppercase block bg-slate-100 px-2 py-0.5 rounded w-fit mb-1">
+                    <span className="text-[8px] sm:text-[10px] font-semibold text-slate-900 tracking-wider uppercase block bg-slate-100 px-2 py-0.5 rounded w-fit mb-1">
                       {item.category}
                     </span>
-                    <span className="text-[14px] font-medium text-slate-900 font-sans tracking-tight block">
+                    <span className="text-[12px] sm:text-[14px] font-medium text-slate-900 font-sans tracking-tight block">
                       {item.title}
                     </span>
-                    <span className="text-[11px] font-light text-slate-500 font-sans tracking-wider uppercase block">
+                    <span className="text-[9px] sm:text-[11px] font-light text-slate-500 font-sans tracking-wider uppercase block">
                       {item.location}
                     </span>
                   </div>

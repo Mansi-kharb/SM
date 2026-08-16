@@ -53,41 +53,41 @@ export default function HeroSection() {
         </video>
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      {/* Dark Gradient Overlay for optimal mobile text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-      {/* Content - Left Bottom Positioned - Exact Figma Specs: Title 522px x 106px, Paragraph 427px x 105px, Button 199px x 22.56px */}
-      <div className="absolute bottom-16 md:bottom-20 left-6 sm:left-12 md:left-16 z-10 text-white">
+      {/* Content - Left Bottom Positioned with Responsive Mobile Styling */}
+      <div className="absolute bottom-10 sm:bottom-16 md:bottom-20 left-5 sm:left-12 md:left-16 right-5 sm:right-auto z-10 text-white">
         
-        {/* Headline Box: 522px x 106px */}
-        <h1 className="font-['Satoshi',sans-serif] text-4xl sm:text-5xl md:text-[52px] font-light leading-[1.02] tracking-tight text-white mb-6 text-left max-w-[522px]">
+        {/* Headline Box: Responsive font size & width */}
+        <h1 className="font-['Satoshi',sans-serif] text-3xl sm:text-5xl md:text-[52px] font-light leading-[1.08] sm:leading-[1.02] tracking-tight text-white mb-4 sm:mb-6 text-left max-w-[522px] drop-shadow-md">
           We create environments where ideas grow
         </h1>
 
-        {/* Paragraph Box: 427px x 105px */}
-        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-8 text-left max-w-[427px]">
+        {/* Paragraph Box: Responsive text size & margin */}
+        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-6 sm:mb-8 text-left max-w-[427px] opacity-95">
           "Driven by action, defined by experience — we are a collective of infinite minds
           shaping one world. Our spaces are not just built; they are thoughtfully crafted
           environments that reflect who we are, what we do best, and the lasting promise
           we deliver to everyone who steps into them."
         </p>
 
-        {/* Contact Button Box: 199px x 22.56px linking to Footer #contact-form */}
+        {/* Contact Button Box: Crisp White Text on Mobile for 100% contrast */}
         <a
           href="#contact-form"
-          className="inline-flex items-center gap-2.5 w-[199px] h-[22.56px] group cursor-pointer"
+          className="inline-flex items-center gap-2.5 group cursor-pointer"
         >
-          {/* Black Triangle Icon ▲ */}
+          {/* Triangle Icon ▲ */}
           <div className="w-[12px] h-[14px] flex items-center justify-center flex-shrink-0">
             <svg
-              className="w-full h-full text-black fill-current"
+              className="w-full h-full text-white fill-current group-hover:scale-110 transition-transform"
               viewBox="0 0 13.61 17.43"
             >
               <polygon points="6.805,0 0,17.43 13.61,17.43" />
             </svg>
           </div>
 
-          <span className="font-['Satoshi',sans-serif] text-sm font-medium uppercase tracking-wider text-black group-hover:text-white transition-colors whitespace-nowrap">
+          <span className="font-['Satoshi',sans-serif] text-xs sm:text-sm font-medium uppercase tracking-wider text-white group-hover:text-emerald-200 transition-colors whitespace-nowrap drop-shadow">
             CONTACT OUR TEAM
           </span>
         </a>

@@ -48,12 +48,12 @@ export default function BlogSection() {
           Discover More on <span className="text-slate-400 font-light">Our Blog</span>
         </h2>
 
-        {/* 4 Column Blog Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Responsive Layout: Touch Horizontal Scroll on Mobile (< sm), 4 Column Grid on Desktop (lg) */}
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 snap-x snap-mandatory no-scrollbar">
           {BLOG_POSTS.map((post) => (
-            <article key={post.id} className="group cursor-pointer flex flex-col">
+            <article key={post.id} className="group cursor-pointer flex flex-col w-[260px] sm:w-auto flex-shrink-0 snap-center">
               {/* Image Container */}
-              <div className="overflow-hidden rounded-none bg-slate-100 aspect-[4/5] mb-5">
+              <div className="overflow-hidden rounded-2xl sm:rounded-none bg-slate-100 aspect-[4/5] mb-5">
                 <img
                   src={post.image}
                   alt={post.title}

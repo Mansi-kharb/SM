@@ -5,8 +5,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import PhilosophySection from '@/components/PhilosophySection';
 import ProcessSection from '@/components/ProcessSection';
-import InteractiveProjectShowcase from '@/components/InteractiveProjectShowcase';
-import ProjectStory from '@/components/ProjectStory';
+import ProjectsGridSection from '@/components/ProjectsGridSection';
 import ExpertiseSection from '@/components/ExpertiseSection';
 import AboutSection from '@/components/AboutSection';
 import TeamCareSection from '@/components/TeamCareSection';
@@ -88,71 +87,17 @@ const DEFAULT_PROJECTS: ProjectData[] = [
 ];
 
 export default function Home() {
-  const [projects, setProjects] = useState<ProjectData[]>(DEFAULT_PROJECTS);
-  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
-
-  useEffect(() => {
-    // Load projects from JSON
-    fetch('/data/projects.json')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.projects) {
-          setProjects(data.projects);
-        }
-      })
-      .catch((err) => console.error('Failed to load projects:', err));
-  }, []);
-
-  const handleSelectProject = (projectId: number) => {
-    setActiveProjectId(projectId);
-    // Smooth scroll down to the unfolded Project Story section
-    setTimeout(() => {
-      const storyElem = document.getElementById('project-story-section');
-      if (storyElem) {
-        storyElem.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
-
-  const handleSelectNextProject = (nextProjectId: number) => {
-    setActiveProjectId(nextProjectId);
-  };
-
-  const handleCloseStory = () => {
-    setActiveProjectId(null);
-    const showcaseElem = document.getElementById('selected-projects');
-    if (showcaseElem) {
-      showcaseElem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const activeProject = projects.find((p) => p.id === activeProjectId) || null;
-
   return (
     <main className="bg-white min-h-screen text-slate-900 font-sans antialiased">
       <Header />
       <HeroSection />
       <PhilosophySection />
-      
+
       {/* About Us Section right before Our Projects */}
       <AboutSection />
 
-      {/* 3D Offset Interactive Project Showcase */}
-      <InteractiveProjectShowcase
-        projects={projects}
-        activeProjectId={activeProjectId}
-        onSelectProject={handleSelectProject}
-      />
-
-      {/* In-Page Unfolding Project Story Series */}
-      {activeProject && (
-        <ProjectStory
-          project={activeProject}
-          allProjects={projects}
-          onSelectNextProject={handleSelectNextProject}
-          onCloseStory={handleCloseStory}
-        />
-      )}
+      {/* Projects Grid Section - Big.dk Style */}
+      <ProjectsGridSection />
 
       <ProcessSection />
       <ExpertiseSection />

@@ -1,54 +1,254 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
 interface Project {
   id: number;
   title: string;
   location: string;
+  category: string;
   image: string;
+  images?: string[];
+  details?: string;
 }
 
 export default function ProjectsGridSection() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null);
+  const [imageScrollIndex, setImageScrollIndex] = useState(0);
 
   useEffect(() => {
-    // Load projects from JSON
     fetch('/data/projects.json')
       .then(res => res.json())
-      .then(data => setProjects(data.projects));
+      .then(data => setProjects(data.projects))
+      .catch(err => console.error('Failed to load projects:', err));
   }, []);
 
-  return (
-    <section id="projects" className="bg-black text-white py-20 md:py-32">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-light mb-16 tracking-wide">
-          Our Projects
-        </h2>
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
 
-        {/* 4 column grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-          {projects.map(project => (
-            <Link key={project.id} href={`/projects/${project.id}`}>
-              <div className="relative aspect-square overflow-hidden group cursor-pointer bg-gray-900">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
-                  <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4">
-                    <h3 className="font-light text-sm md:text-base mb-1">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-gray-300">{project.location}</p>
-                  </div>
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = 400;
+    scrollContainerRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      handleScroll();
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const handleDoubleClick = () => {
+    setExpandedProjectId(null);
+    setImageScrollIndex(0);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setExpandedProjectId(null);
+        setImageScrollIndex(0);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const expandedProject = projects.find(p => p.id === expandedProjectId);
+  const projectImages = expandedProject?.images?.length ? expandedProject.images : [expandedProject?.image].filter(Boolean);
+
+  if (projects.length === 0) return null;
+
+  return (
+    <section className="bg-white py-16 md:py-24 overflow-hidden">
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+
+        @keyframes fadeInBlur {
+          from {
+            opacity: 0;
+            filter: blur(10px);
+          }
+          to {
+            opacity: 1;
+            filter: blur(0);
+          }
+        }
+
+        .image-animate {
+          animation: fadeInBlur 0.8s ease-out forwards;
+        }
+
+        .image-animate:hover {
+          transform: scale(1.05);
+          transition: transform 0.4s ease-out;
+        }
+      `}</style>
+      <div className="w-full px-6 sm:px-10 lg:px-16">
+
+        <div className="mb-12 md:mb-16 max-w-[1700px] mx-auto">
+          <h2 className="font-['Satoshi',sans-serif] text-4xl md:text-5xl font-light text-slate-900 mb-2 tracking-tight">
+            Our Projects
+          </h2>
+          <p className="text-lg text-slate-600 font-light max-w-2xl">
+            Explore our diverse portfolio of design and construction projects.
+          </p>
+        </div>
+
+        <div className="relative -mx-6 sm:-mx-10 lg:-mx-16">
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 sm:px-10 lg:px-16 hide-scrollbar"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {projects.map((project) => {
+              const isExpanded = expandedProjectId === project.id;
+              const projectImgs = project.images?.length ? project.images : [project.image];
+
+              return (
+                <div
+                  key={project.id}
+                  onDoubleClick={handleDoubleClick}
+                  className={`flex-shrink-0 group transition-all duration-500 ${
+                    isExpanded ? 'w-full md:w-2/3 mx-auto' : 'w-1/3 md:w-1/4'
+                  }`}
+                >
+                  {isExpanded ? (
+                    <div className="flex flex-col h-full bg-white rounded-lg border-0">
+                      <div className="px-6 md:px-8 pt-6 md:pt-8 flex-shrink-0 pb-6">
+                        <span className="text-xs md:text-sm font-light text-emerald-500 uppercase tracking-wider">
+                          {project.category}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-light text-slate-900 mt-3 mb-2">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm md:text-base text-slate-600 font-light">
+                          {project.location}
+                        </p>
+                      </div>
+
+                      <div className="flex-1 overflow-y-auto px-6 md:px-8 py-6 hide-scrollbar">
+
+                        {/* Images Grid - All images scrollable */}
+                        <div className="mb-12">
+                          <p className="text-xs font-light text-slate-500 uppercase tracking-wider mb-4">
+                            Gallery
+                          </p>
+                          <div className="grid grid-cols-1 gap-6">
+                            {projectImgs.map((img, idx) => (
+                              <div
+                                key={idx}
+                                className="relative w-full aspect-video bg-slate-200 overflow-hidden rounded cursor-pointer border-r border-slate-300"
+                              >
+                                <img
+                                  src={img}
+                                  alt={`Image ${idx + 1}`}
+                                  className="w-full h-full object-cover image-animate"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        {project.details && (
+                          <div className="mb-8">
+                            <h4 className="text-sm font-light text-slate-900 uppercase tracking-wider mb-3">
+                              About This Project
+                            </h4>
+                            <p className="text-sm font-light text-slate-700 leading-relaxed">
+                              {project.details}
+                            </p>
+                          </div>
+                        )}
+
+                        <div className="text-xs font-light text-slate-400 uppercase tracking-wider pt-6 border-t border-slate-200">
+                          Double click to close - ESC to exit
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => {
+                        setExpandedProjectId(project.id);
+                        setImageScrollIndex(0);
+                      }}
+                      className="flex flex-col h-full cursor-pointer"
+                    >
+                      <div className="pb-4 md:pb-5">
+                        <span className="text-xs md:text-sm font-light text-emerald-500 uppercase tracking-wider">
+                          {project.category}
+                        </span>
+                        <h3 className="text-sm md:text-base font-light text-slate-900 mt-2 mb-1">
+                          {project.title}
+                        </h3>
+                        <p className="text-xs md:text-sm text-slate-600 font-light">
+                          {project.location}
+                        </p>
+                      </div>
+
+                      <div className="relative w-full h-56 md:h-64 overflow-hidden bg-slate-200 border border-slate-200 hover:border-slate-300 transition-all duration-300">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+
+                        <div className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/20 group-hover:bg-emerald-500 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </Link>
-          ))}
+              );
+            })}
+          </div>
+
+          {canScrollLeft && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-40 p-2 rounded-full border border-slate-300 hover:border-slate-900 hover:bg-slate-900 text-slate-700 hover:text-white transition-all duration-300 hidden lg:flex items-center justify-center"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
+
+          {canScrollRight && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-40 p-2 rounded-full border border-slate-300 hover:border-slate-900 hover:bg-slate-900 text-slate-700 hover:text-white transition-all duration-300 hidden lg:flex items-center justify-center"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </section>

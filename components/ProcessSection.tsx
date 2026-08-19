@@ -101,7 +101,7 @@ export default function ProcessSection() {
             {/* Cards 01 & 02 - Side by Side 2-Column Layout */}
             <div className="grid grid-cols-2 gap-3 sm:gap-10">
               {/* Card 1: Geometric Abstract Poster */}
-              <div className="relative w-full aspect-[430/550] rounded-xl sm:rounded-[28px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 p-3 sm:p-6 flex flex-col justify-between shadow-sm">
+              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-xl sm:rounded-[28px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 p-3 sm:p-6 flex flex-col justify-between shadow-sm">
                 <div className="absolute top-3 right-3 sm:top-6 sm:right-6 w-5 h-5 sm:w-9 sm:h-9 rounded-full bg-[#0f5339] z-20 shadow-sm" />
                 <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4">
                   <svg className="w-full h-full" viewBox="0 0 430 550" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@ export default function ProcessSection() {
               </div>
 
               {/* Card 2: Luxury Villa Pool Photo */}
-              <div className="relative w-full aspect-[430/550] rounded-xl sm:rounded-[28px] overflow-hidden bg-slate-100 border border-slate-200/60 shadow-sm group">
+              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-xl sm:rounded-[28px] overflow-hidden bg-slate-100 border border-slate-200/60 shadow-sm group">
                 <img
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop"
                   alt="Luxury Modern Architecture Pool Villa"
@@ -200,7 +200,7 @@ export default function ProcessSection() {
             {/* Cards 03 & 04 */}
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
               {/* Card 3: Modern Concrete Architecture Patio with Pool Steps */}
-              <div className="relative aspect-[430/550] w-full rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
                 <img
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
                   alt="Modern Concrete Interior Architecture"
@@ -210,7 +210,7 @@ export default function ProcessSection() {
               </div>
 
               {/* Card 4: Black & White Concrete Staircase Architecture */}
-              <div className="relative aspect-[430/550] w-full rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
                 <img
                   src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
                   alt="Minimalist Concrete Staircase Architecture"

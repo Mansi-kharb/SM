@@ -84,7 +84,7 @@ export default function ExpertiseSection() {
             onClick={handlePrev}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[260px] sm:h-[420px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
+            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[180px] sm:h-[280px] md:h-[440px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
           >
             <AnimatePresence mode="wait">
               {items[leftIndex].type === 'red-card' ? (
@@ -130,7 +130,7 @@ export default function ExpertiseSection() {
           {/* Center Main Active Card - Scaled for Mobile (260px) */}
           <motion.div
             layout
-            className="relative w-full sm:w-[58%] lg:w-[56%] max-w-[1180px] h-[260px] sm:h-[420px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
+            className="relative w-full sm:w-[58%] lg:w-[56%] max-w-[1180px] h-[180px] sm:h-[280px] md:h-[440px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden group shadow-2xl z-20 border border-slate-200/60"
           >
             <AnimatePresence mode="wait">
               {items[activeIndex].type === 'red-card' ? (
@@ -185,7 +185,7 @@ export default function ExpertiseSection() {
             onClick={handleNext}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[260px] sm:h-[420px] md:h-[661px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
+            className="relative hidden sm:block w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] h-[180px] sm:h-[280px] md:h-[440px] flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer opacity-95 hover:opacity-100 transition-opacity"
           >
             <AnimatePresence mode="wait">
               {items[rightIndex].type === 'red-card' ? (

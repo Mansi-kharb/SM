@@ -7,22 +7,23 @@ export default function ProcessSection() {
     {
       number: '01',
       title: 'Discover',
-      description: 'We begin by listening — to your space, your goals, and the story you want your space to tell.',
+      description: 'Initial consultation and creative ideation. We begin by listening — to your space, your goals, and the story you want your space to tell.',
     },
     {
       number: '02',
       title: 'Define',
-      description: 'We translate insights into structured parameters, setting the direction for design with clarity and intent.',
+      description: 'Detailed planning and 3D visualization. We translate insights into structured parameters with realistic project visualization and approval.',
+      description2: 'Advanced 3D rendering for realistic project visualization.',
     },
     {
       number: '03',
       title: 'Design',
-      description: 'We begin by listening — to your needs, your goals, and the story you want your space to tell.',
+      description: 'Material selection and execution planning. Curated selection of premium materials and finishes with comprehensive project implementation strategy.',
     },
     {
       number: '04',
       title: 'Deliver',
-      description: 'With precision and passion, we turn every design into a finished reality that exceeds expectations.',
+      description: 'With precision and passion, we turn every design into a finished reality that exceeds expectations. Complete project handover with quality assurance.',
     },
   ];
 

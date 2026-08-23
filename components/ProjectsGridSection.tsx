@@ -289,31 +289,6 @@ export default function ProjectsGridSection() {
                           </div>
                         )}
 
-                        {(project.budget || project.duration) && (
-                          <div className="grid grid-cols-2 gap-8 mb-12 py-8 border-y border-slate-200">
-                            {project.budget && (
-                              <div>
-                                <p className="text-xs font-light text-slate-500 uppercase tracking-wider mb-2">
-                                  Budget
-                                </p>
-                                <p className="text-lg font-light text-slate-900">
-                                  {project.budget}
-                                </p>
-                              </div>
-                            )}
-                            {project.duration && (
-                              <div>
-                                <p className="text-xs font-light text-slate-500 uppercase tracking-wider mb-2">
-                                  Duration
-                                </p>
-                                <p className="text-lg font-light text-slate-900">
-                                  {project.duration}
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        )}
-
                         <div className="flex items-center justify-between pt-6 border-t border-slate-200">
                           <div className="text-xs font-light text-slate-400 uppercase tracking-wider">
                             Double click to close - ESC to exit

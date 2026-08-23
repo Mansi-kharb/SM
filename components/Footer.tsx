@@ -1,11 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 export default function Footer() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
   return (
     <footer id="contact" className="bg-[#0f5b43] text-white py-16 md:py-20 border-t border-emerald-900/40 relative">
       <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16">
@@ -41,109 +39,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Center Column: CONTACT OUR TEAM Text Link or Open Contact Form at top center */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-start pt-2 w-full" id="contact-form">
-            {!isFormOpen ? (
-              /* State 1: Clean Text Link with Triangle Icon at top center */
-              <button
-                onClick={() => setIsFormOpen(true)}
-                className="inline-flex items-center gap-2.5 group cursor-pointer text-white hover:text-emerald-200 transition-colors"
-              >
-                {/* Black Triangle Icon ▲ */}
-                <div className="w-[12px] h-[14px] flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-full h-full text-white fill-current group-hover:translate-x-0.5 transition-transform"
-                    viewBox="0 0 13.61 17.43"
-                  >
-                    <polygon points="6.805,0 0,17.43 13.61,17.43" />
-                  </svg>
-                </div>
-
-                <span className="font-['Satoshi',sans-serif] text-sm font-medium uppercase tracking-wider whitespace-nowrap">
-                  CONTACT OUR TEAM
-                </span>
-              </button>
-            ) : (
-              /* State 2: Center Box Contact Form with Close (X) Button */
-              <div className="w-full max-w-lg p-6 rounded-2xl bg-emerald-950/60 border border-emerald-400/30 backdrop-blur-md shadow-2xl relative animate-fadeIn">
-                
-                {/* Header with Title & Close (X) button */}
-                <div className="flex items-center justify-between mb-4 pb-2 border-b border-emerald-800/60">
-                  <h3 className="text-lg font-light text-white tracking-wide">Contact Our Team</h3>
-                  <button
-                    onClick={() => setIsFormOpen(false)}
-                    className="w-8 h-8 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-200 hover:text-white flex items-center justify-center transition-colors"
-                    aria-label="Close form"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert('Thank you! Your message has been sent to our team.');
-                    setIsFormOpen(false);
-                  }}
-                  className="flex flex-col gap-3"
-                >
-                  {/* Name */}
-                  <div>
-                    <label className="block text-xs font-light text-emerald-200 mb-1">Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Enter your name"
-                      className="w-full bg-emerald-900/40 border border-emerald-400/30 rounded-lg px-3.5 py-2 text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-white transition-colors"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label className="block text-xs font-light text-emerald-200 mb-1">Email Address</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      className="w-full bg-emerald-900/40 border border-emerald-400/30 rounded-lg px-3.5 py-2 text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-white transition-colors"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label className="block text-xs font-light text-emerald-200 mb-1">Phone Number</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210"
-                      className="w-full bg-emerald-900/40 border border-emerald-400/30 rounded-lg px-3.5 py-2 text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-white transition-colors"
-                    />
-                  </div>
-
-                  {/* Description */}
-                  <div>
-                    <label className="block text-xs font-light text-emerald-200 mb-1">Description / Message</label>
-                    <textarea
-                      rows={3}
-                      required
-                      placeholder="Tell us about your project requirements..."
-                      className="w-full bg-emerald-900/40 border border-emerald-400/30 rounded-lg px-3.5 py-2 text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-white transition-colors resize-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="mt-2 w-full py-2.5 bg-white text-[#0f5b43] font-medium text-xs uppercase tracking-widest rounded-lg hover:bg-emerald-100 transition-colors shadow-sm cursor-pointer"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
+          {/* Center Column - Empty (Contact moved to dedicated section) */}
+          <div className="lg:col-span-5"></div>
 
           {/* Right Column: Nav Links, Social Icons, Copyright (Cols 9-12) */}
           <div className="lg:col-span-3 flex flex-col items-start lg:items-end justify-between self-stretch gap-10">
@@ -159,12 +56,6 @@ export default function Footer() {
               <Link href="#about" className="hover:text-white transition-colors">
                 About us
               </Link>
-              <button
-                onClick={() => setIsFormOpen(true)}
-                className="hover:text-white transition-colors text-left lg:text-right"
-              >
-                Contact us
-              </button>
               <Link href="#blogs" className="hover:text-white transition-colors">
                 Blogs
               </Link>

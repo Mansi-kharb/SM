@@ -10,6 +10,7 @@ import ExpertiseSection from '@/components/ExpertiseSection';
 import AboutSection from '@/components/AboutSection';
 import TeamCareSection from '@/components/TeamCareSection';
 import BlogSection from '@/components/BlogSection';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { ProjectData } from '@/components/ProjectCard';
 
@@ -103,6 +104,7 @@ export default function Home() {
       <ExpertiseSection />
       <TeamCareSection />
       <BlogSection />
+      <ContactSection />
       <Footer />
     </main>
   );

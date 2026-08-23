@@ -9,32 +9,45 @@ export default function ExpertiseSection() {
   const items = [
     {
       id: 1,
-      title: 'Interior Architecture',
-      description: 'Custom tailored luxury interiors blending natural materials and warm ambient lighting.',
+      title: 'Architecture',
+      description: 'Innovative architectural designs that stand the test of time.',
       type: 'image',
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop',
+      image: '/images/Architecture.png',
     },
     {
       id: 2,
-      title: 'Landscape & Master Planning',
-      description: 'Monolithic, sustainable architectural forms tailored to surrounding landscapes.',
+      title: 'Residential',
+      description: 'Thoughtfully designed homes tailored to your lifestyle.',
       type: 'image',
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
-      fallback: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
+      image: '/images/Residential.png',
     },
     {
       id: 3,
-      title: 'Architectural Design',
-      description: 'Precision engineering and seamless end-to-end execution exceeding industry standards.',
+      title: 'Office Design',
+      description: 'Economic and collaborative workplaces that foster productivity.',
       type: 'image',
-      image: '/images/about-2.png',
+      image: '/images/Office-Design.png',
     },
     {
       id: 4,
-      title: 'Construction & Turnkey',
-      description: 'Precision engineering and seamless end-to-end execution exceeding industry standards.',
-      type: 'red-card',
-      color: '#d9232e',
+      title: 'Retail Design',
+      description: 'Designing retail spaces that attract, engage, and convert.',
+      type: 'image',
+      image: '/images/Retail-Design.png',
+    },
+    {
+      id: 5,
+      title: 'Landscape',
+      description: 'Sustainable landscapes that connect architecture with nature.',
+      type: 'image',
+      image: '/images/Landscape.png',
+    },
+    {
+      id: 6,
+      title: 'Turnkey Execution',
+      description: 'End-to-end project delivery with precision, quality, and timely execution.',
+      type: 'image',
+      image: '/images/Turnkey-Execution.png',
     },
   ];
 
@@ -58,16 +71,14 @@ export default function ExpertiseSection() {
           {/* Left Title Column - Responsive mobile typography */}
           <div className="md:col-span-6">
             <h2 className="font-['Satoshi',sans-serif] font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.0] max-w-[541px]">
-              Our Expertise Powers<br />
-              Every Stage of Your<br />
-              <span className="text-[#c8c8c8] font-light">Design and Construction<br />Journey</span>
+              Our Services
             </h2>
           </div>
 
           {/* Right Description Column */}
           <div className="md:col-span-6 md:pl-8">
             <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-lg">
-              With projects ranging from cozy cafes to sprawling residences, creative workspaces to retail identities — we approach each project with openness, rigor, and an obsession with detail.
+              We deliver thoughtful architecture and interior solutions that blend beauty, function, and sustainability.
             </p>
           </div>
 

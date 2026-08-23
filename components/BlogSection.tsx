@@ -41,7 +41,7 @@ const BLOG_POSTS: BlogPost[] = [
 
 export default function BlogSection() {
   return (
-    <section id="blogs" className="bg-white py-16 md:py-24 px-6 md:px-12 font-sans border-t border-slate-100">
+    <section id="blogs" className="bg-white py-8 md:py-12 px-6 md:px-12 font-sans border-t border-slate-100">
       <div className="max-w-[1720px] mx-auto">
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight leading-tight mb-12">

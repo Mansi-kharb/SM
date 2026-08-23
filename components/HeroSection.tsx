@@ -61,20 +61,33 @@ export default function HeroSection() {
         
         {/* Headline Box: Responsive font size & width */}
         <h1 className="font-['Satoshi',sans-serif] text-3xl sm:text-5xl md:text-[52px] font-light leading-[1.08] sm:leading-[1.02] tracking-tight text-white mb-4 sm:mb-6 text-left max-w-[522px] drop-shadow-md">
-          We create environments where ideas grow
+          Designing Extraordinary Spaces
         </h1>
 
-        {/* Paragraph Box: Responsive text size & margin */}
-        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-6 sm:mb-8 text-left max-w-[427px] opacity-95">
-          "Driven by action, defined by experience — we are a collective of infinite minds
-          shaping one world. Our spaces are not just built; they are thoughtfully crafted
-          environments that reflect who we are, what we do best, and the lasting promise
-          we deliver to everyone who steps into them."
+        {/* Subtitle Box: Responsive text size & margin */}
+        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-0.5 sm:mb-1 text-left max-w-[427px] opacity-95">
+          Architecture | Interior Design
+        </p>
+
+        {/* Tags Box: Responsive text size */}
+        <p className="font-['Satoshi',sans-serif] text-xs sm:text-sm text-slate-100 font-light leading-relaxed mb-4 sm:mb-6 text-left max-w-[427px] opacity-90">
+          Workspace | Luxury Residences | Commercial
         </p>
 
         {/* Contact Button Box: Crisp White Text on Mobile for 100% contrast */}
-        <a
-          href="#contact-form"
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            // Dispatch event to open contact form
+            window.dispatchEvent(new CustomEvent('openContactForm'));
+            // Scroll to contact section
+            setTimeout(() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 100);
+          }}
           className="inline-flex items-center gap-2.5 group cursor-pointer"
         >
           {/* Triangle Icon ▲ */}
@@ -90,7 +103,7 @@ export default function HeroSection() {
           <span className="font-['Satoshi',sans-serif] text-xs sm:text-sm font-medium uppercase tracking-wider text-white group-hover:text-emerald-200 transition-colors whitespace-nowrap drop-shadow">
             CONTACT OUR TEAM
           </span>
-        </a>
+        </button>
       </div>
     </section>
   );

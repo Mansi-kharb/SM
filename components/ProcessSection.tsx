@@ -99,37 +99,21 @@ export default function ProcessSection() {
 
             {/* Cards 01 & 02 - Side by Side 2-Column Layout */}
             <div className="grid grid-cols-2 gap-3 sm:gap-10">
-              {/* Card 1: Geometric Abstract Poster */}
-              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-xl sm:rounded-[28px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 p-3 sm:p-6 flex flex-col justify-between shadow-sm">
+              {/* Card 1: Discover - concept board & floor plans */}
+              <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-xl sm:rounded-[28px] overflow-hidden bg-[#f4f7f5] border border-slate-200/60 shadow-sm group">
                 <div className="absolute top-3 right-3 sm:top-6 sm:right-6 w-5 h-5 sm:w-9 sm:h-9 rounded-full bg-[#0f5339] z-20 shadow-sm" />
-                <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4">
-                  <svg className="w-full h-full" viewBox="0 0 430 550" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id="card-tri-bg-m" width="30" height="30" patternUnits="userSpaceOnUse">
-                        <path d="M 0 30 L 15 0 L 30 30" fill="none" stroke="#e2e8f0" strokeWidth="1" />
-                      </pattern>
-                    </defs>
-                    <rect width="430" height="550" fill="url(#card-tri-bg-m)" />
-                    <g opacity="0.85">
-                      <polygon points="215,80 140,200 290,200" fill="#cbd5e1" opacity="0.9" />
-                      <polygon points="160,150 250,300 110,320" fill="#99f6e4" opacity="0.85" />
-                      <polygon points="180,240 280,380 340,270" fill="#64748b" opacity="0.65" />
-                      <polygon points="120,310 240,430 180,480" fill="#94a3b8" opacity="0.7" />
-                      <polygon points="210,190 320,330 200,340" fill="#a7f3d0" opacity="0.8" />
-                      <polygon points="210,380 300,480 390,400" fill="#475569" opacity="0.5" />
-                      <polygon points="280,180 370,260 300,290" fill="#5eead4" opacity="0.8" />
-                      <polygon points="90,420 130,470 70,480" fill="#cbd5e1" opacity="0.6" />
-                      <polygon points="340,440 370,490 320,490" fill="#94a3b8" opacity="0.5" />
-                    </g>
-                  </svg>
-                </div>
+                <img
+                  src="/images/process/discover.jpg"
+                  alt="Discover - mood board, floor plans and concept sketches on a studio desk"
+                  className="w-full h-full object-cover rounded-xl sm:rounded-[28px] group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
               </div>
 
-              {/* Card 2: Luxury Villa Pool Photo */}
+              {/* Card 2: Define - 3D visualization in progress */}
               <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-xl sm:rounded-[28px] overflow-hidden bg-slate-100 border border-slate-200/60 shadow-sm group">
                 <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop"
-                  alt="Luxury Modern Architecture Pool Villa"
+                  src="/images/process/define.jpg"
+                  alt="Define - designer refining a 3D model of the project on screen"
                   className="w-full h-full object-cover rounded-xl sm:rounded-[28px] group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
@@ -198,24 +182,22 @@ export default function ProcessSection() {
 
             {/* Cards 03 & 04 */}
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
-              {/* Card 3: Modern Concrete Architecture Patio with Pool Steps */}
+              {/* Card 3: Design - material & finish selection */}
               <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
-                  alt="Modern Concrete Interior Architecture"
+                  src="/images/process/design.jpg"
+                  alt="Design - material and finish swatch board with specifications"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Card 4: Black & White Concrete Staircase Architecture */}
+              {/* Card 4: Deliver - completed space at handover */}
               <div className="relative w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] aspect-[290/370] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow group">
                 <img
-                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
-                  alt="Minimalist Concrete Staircase Architecture"
-                  className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  src="/images/process/deliver.jpg"
+                  alt="Deliver - completed interior at handover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
 

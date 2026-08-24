@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 370" width="290" height="370" role="img" aria-label="Define: isometric 3D massing model with dimensions">
+  <defs>
+    <pattern id="dfn-iso" width="26" height="15" patternUnits="userSpaceOnUse">
+      <path d="M 0 15 L 13 7.5 L 26 15 M 13 7.5 L 13 0" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="dfn-veil" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7f5" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#f4f7f5" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="290" height="370" fill="#f4f7f5"/>
+  <rect width="290" height="370" fill="url(#dfn-iso)"/>
+  <rect width="290" height="370" fill="url(#dfn-veil)"/>
+
+  <polygon points="150,162 262,224 150,286 38,224" fill="#e2ede7" opacity="0.8"/>
+  <polygon points="150,162 262,224 150,286 38,224" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+  <polygon points="181,183 242,218 190,248 129,213" fill="#475569" opacity="0.22"/>
+
+  <polygon points="145,104 206,139 154,169 93,134" fill="#ffffff" fill-opacity="0.9" stroke="#475569" stroke-width="1.6"/>
+  <polygon points="93,134 154,169 154,232 93,197" fill="#cbd5e1" fill-opacity="0.75" stroke="#475569" stroke-width="1.6"/>
+  <polygon points="154,169 206,139 206,202 154,232" fill="#94a3b8" fill-opacity="0.7" stroke="#475569" stroke-width="1.6"/>
+
+  <polygon points="206,146 240,166 206,186 172,166" fill="#a7f3d0" fill-opacity="0.85" stroke="#0f5339" stroke-width="1.2"/>
+  <polygon points="172,166 206,186 206,222 172,202" fill="#5eead4" fill-opacity="0.55" stroke="#0f5339" stroke-width="1.2"/>
+  <polygon points="206,186 240,166 240,202 206,222" fill="#99f6e4" fill-opacity="0.4" stroke="#0f5339" stroke-width="1.2"/>
+
+  <g stroke="#ffffff" stroke-width="1.2" opacity="0.85">
+    <path d="M 103 152 L 144 176"/>
+    <path d="M 113 158 L 113 190"/>
+    <path d="M 133 170 L 133 202"/>
+    <path d="M 166 196 L 196 179"/>
+    <path d="M 176 209 L 176 178"/>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1" fill="none" stroke-dasharray="3 4">
+    <path d="M 93 197 L 44 226"/>
+    <path d="M 93 134 L 44 163"/>
+    <path d="M 206 202 L 254 230"/>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1" fill="none">
+    <path d="M 46 164 L 46 225"/>
+    <path d="M 42 168 L 46 160 L 50 168"/>
+    <path d="M 42 221 L 46 229 L 50 221"/>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1" fill="none">
+    <path d="M 93 90 L 206 90"/>
+    <path d="M 93 85 L 93 95 M 206 85 L 206 95"/>
+  </g>
+
+  <g stroke="#0f5339" stroke-width="1.4" fill="none" opacity="0.9">
+    <path d="M 232 300 L 250 300 M 241 291 L 241 309"/>
+  </g>
+  <circle cx="52" cy="300" r="4" fill="#0f5339"/>
+  <g stroke="#cbd5e1" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
+    <path d="M 66 300 L 128 300"/>
+    <path d="M 66 314 L 100 314"/>
+  </g>
+</svg>

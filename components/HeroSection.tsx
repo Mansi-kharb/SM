@@ -48,7 +48,7 @@ export default function HeroSection() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/images/sec_ki_video_i_want_gnerate.mp4" type="video/mp4" />
+          <source src="/Hero%20Section%20video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

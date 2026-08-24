@@ -64,7 +64,7 @@ export default function ExpertiseSection() {
 
   return (
     <section className="bg-white pt-12 md:pt-16 pb-8 md:pb-12 border-t border-slate-100 overflow-hidden">
-      {/* Header - Two Column Layout matching Figma Screenshot (Left: Title, Right: Paragraph) */}
+      {/* Header - Section Title */}
       <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 mb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
@@ -73,13 +73,6 @@ export default function ExpertiseSection() {
             <h2 className="font-['Satoshi',sans-serif] font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.0] max-w-[541px]">
               Our Services
             </h2>
-          </div>
-
-          {/* Right Description Column */}
-          <div className="md:col-span-6 md:pl-8">
-            <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-lg">
-              We deliver thoughtful architecture and interior solutions that blend beauty, function, and sustainability.
-            </p>
           </div>
 
         </div>

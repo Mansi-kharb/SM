@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 370" width="290" height="370" role="img" aria-label="Deliver: completed building elevation handed over">
+  <defs>
+    <linearGradient id="dlv-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef4f1"/>
+      <stop offset="0.62" stop-color="#f7faf8"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="dlv-glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#475569"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.85"/>
+    </linearGradient>
+    <pattern id="dlv-tri" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 0 30 L 15 0 L 30 30" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="290" height="370" fill="url(#dlv-sky)"/>
+  <rect width="290" height="370" fill="url(#dlv-tri)" opacity="0.5"/>
+  <circle cx="226" cy="66" r="20" fill="none" stroke="#0f5339" stroke-width="1.2" opacity="0.28"/>
+
+  <rect x="0" y="300" width="290" height="70" fill="#ebf3ef"/>
+  <path d="M 0 300 L 290 300" stroke="#cbd5e1" stroke-width="1"/>
+  <polygon points="60,300 116,300 152,318 44,318" fill="#cbd5e1" opacity="0.45"/>
+
+  <rect x="52" y="150" width="122" height="150" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+  <rect x="174" y="196" width="72" height="104" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.4"/>
+  <rect x="40" y="130" width="146" height="20" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.4"/>
+  <rect x="166" y="176" width="92" height="20" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.4"/>
+
+  <g fill="url(#dlv-glass)">
+    <rect x="66" y="166" width="44" height="52"/>
+    <rect x="120" y="166" width="42" height="52"/>
+    <rect x="66" y="234" width="96" height="34"/>
+    <rect x="186" y="212" width="48" height="40"/>
+    <rect x="186" y="264" width="48" height="24"/>
+  </g>
+
+  <g stroke="#f4f7f5" stroke-width="1.6">
+    <path d="M 88 166 L 88 218"/>
+    <path d="M 141 166 L 141 218"/>
+    <path d="M 66 192 L 162 192"/>
+    <path d="M 114 234 L 114 268"/>
+    <path d="M 210 212 L 210 252"/>
+  </g>
+
+  <rect x="52" y="284" width="122" height="16" fill="#e2ede7" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="96" y="268" width="30" height="32" fill="#0f5339"/>
+
+  <g stroke="#0f5339" stroke-width="2" stroke-linecap="round">
+    <path d="M 34 300 L 34 268"/>
+    <path d="M 262 300 L 262 274"/>
+  </g>
+  <circle cx="34" cy="256" r="15" fill="#0f5339" opacity="0.85"/>
+  <circle cx="262" cy="262" r="12" fill="#0f5339" opacity="0.7"/>
+
+  <g stroke="#94a3b8" stroke-width="1" fill="none">
+    <path d="M 40 118 L 186 118"/>
+    <path d="M 40 113 L 40 123 M 186 113 L 186 123"/>
+  </g>
+
+  <g stroke="#cbd5e1" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
+    <path d="M 44 336 L 118 336"/>
+    <path d="M 44 350 L 84 350"/>
+  </g>
+  <path d="M 232 336 L 240 344 L 254 330" fill="none" stroke="#0f5339" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

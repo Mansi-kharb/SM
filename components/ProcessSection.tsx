@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 export default function ProcessSection() {
   const steps = [
     {
@@ -29,7 +27,7 @@ export default function ProcessSection() {
 
   return (
     <section className="bg-white py-16 md:py-24 overflow-hidden border-t border-slate-100">
-      <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col space-y-20">
+      <div className="w-full mx-auto px-6 sm:px-10 lg:px-16 flex flex-col space-y-20">
         
         {/* ROW 1: Headline (419px x 240px) + Step 01 & 02 (Cards 430px x 550px) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -49,8 +47,8 @@ export default function ProcessSection() {
           <div className="lg:col-span-8 flex flex-col">
             
             {/* Timeline Track 1 - Side by Side 2-Column on Mobile & Desktop */}
-            <div className="relative flex items-center h-[40px] sm:h-[50px] w-full mb-3 sm:mb-4">
-              <div className="absolute left-[20px] sm:left-[25px] right-0 h-[32px] sm:h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
+            <div className="relative flex items-center h-[40px] sm:h-[50px] mb-3 sm:mb-4">
+              <div className="absolute left-0 -right-[100vw] h-[32px] sm:h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-1" width="20" height="40.26" patternUnits="userSpaceOnUse">
@@ -148,8 +146,8 @@ export default function ProcessSection() {
           <div className="lg:col-span-8 flex flex-col">
             
             {/* Timeline Track 2 extending from left edge to badge 04 */}
-            <div className="relative flex items-center h-[50px] w-full mb-4">
-              <div className="absolute left-0 right-[calc(50%-25px)] h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
+            <div className="relative flex items-center h-[50px] mb-4">
+              <div className="absolute -left-[100vw] right-[calc(50%-41px)] sm:right-[calc(50%-49px)] h-[40.26px] top-1/2 -translate-y-1/2 z-0 overflow-hidden">
                 <svg className="w-full h-full" width="100%" height="40.26">
                   <defs>
                     <pattern id="tessellated-triangles-track-2" width="20" height="40.26" patternUnits="userSpaceOnUse">

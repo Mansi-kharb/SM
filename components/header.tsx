@@ -36,14 +36,12 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { label: 'Philosophy', href: '#philosophy' },
     { label: 'About Us', href: '#about' },
-    { label: 'Our Projects', href: '#selected-projects' },
+    { label: 'Our Projects', href: '#projects' },
     { label: 'Process', href: '#process' },
-    { label: 'Expertise', href: '#expertise' },
-    { label: 'Team', href: '#team-care' },
+    { label: 'Services', href: '#services' },
     { label: 'Blogs', href: '#blogs' },
-    { label: 'Contact', href: '#contact-form' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (

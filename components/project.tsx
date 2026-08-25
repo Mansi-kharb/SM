@@ -334,7 +334,7 @@ export default function ProjectsGridSection() {
   if (projects.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="bg-white py-5 md:py-14 overflow-x-clip">
+    <section id="projects" ref={sectionRef} className="bg-white py-5 md:py-14 overflow-x-clip">
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;

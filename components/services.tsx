@@ -68,7 +68,7 @@ export default function ExpertiseSection() {
   const rightIndex = (activeIndex + 1) % items.length;
 
   return (
-    <section className="bg-white pt-4 md:pt-16 pb-4 md:pb-12 border-t border-slate-100 overflow-hidden">
+    <section id="services" className="bg-white pt-4 md:pt-16 pb-4 md:pb-12 border-t border-slate-100 overflow-hidden">
       {/* Header - Section Title */}
       <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 mb-4 md:mb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -309,7 +309,7 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="bg-white pt-6 pb-4 md:py-24 overflow-hidden border-t border-slate-100">
+    <section id="process" className="bg-white pt-6 pb-4 md:py-24 overflow-hidden border-t border-slate-100">
       <div className="w-full mx-auto px-6 sm:px-10 lg:px-16 flex flex-col space-y-10 md:space-y-20">
         
         {/* ROW 1: Headline (419px x 240px) + Step 01 & 02 (Cards 430px x 550px) */}

@@ -38,7 +38,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-screen flex items-center justify-center bg-gray-100 pt-20 overflow-hidden">
+    <section ref={sectionRef} className="relative h-[100svh] bg-gray-100 overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
@@ -57,7 +57,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
       {/* Content - Left Bottom Positioned with Responsive Mobile Styling */}
-      <div className="absolute bottom-10 sm:bottom-16 md:bottom-20 left-5 sm:left-12 md:left-16 right-5 sm:right-auto z-10 text-white">
+      <div className="absolute bottom-14 sm:bottom-16 md:bottom-20 left-5 sm:left-12 md:left-16 right-5 sm:right-auto z-10 text-white">
         
         {/* Headline Box: Responsive font size & width */}
         <h1 className="font-['Satoshi',sans-serif] text-3xl sm:text-5xl md:text-[52px] font-light leading-[1.08] sm:leading-[1.02] tracking-tight text-white mb-4 sm:mb-6 text-left max-w-[522px] drop-shadow-md">

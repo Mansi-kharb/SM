@@ -5,16 +5,16 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#0f5b43] text-white py-16 md:py-20 border-t border-emerald-900/40 relative">
+    <footer id="contact" className="bg-[#0f5b43] text-white py-8 md:py-20 border-t border-emerald-900/40 relative">
       <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
           
           {/* Left Column: Brand Logo & Reach Out (Cols 1-4) */}
           <div className="lg:col-span-4 flex flex-col items-start">
             
             {/* Logo Image Asset */}
-            <Link href="/" className="group mb-4 inline-block">
-              <div className="w-48 sm:w-56 h-auto">
+            <Link href="/" className="group mb-2 lg:mb-4 inline-block">
+              <div className="w-40 sm:w-56 h-auto">
                 <img
                   src="/images/e839ecde-f9f5-4b2c-83ec-e5641a709c6a.png"
                   alt="Studio Materium Logo"
@@ -24,29 +24,29 @@ export default function Footer() {
             </Link>
 
             {/* Mint Triangle Wave / Zigzag Pattern Line */}
-            <div className="my-3 flex items-center gap-1 opacity-90">
+            <div className="my-2 lg:my-3 flex items-center gap-1 opacity-90">
               {Array.from({ length: 18 }).map((_, i) => (
-                <svg key={i} className="w-2.5 h-2.5 text-emerald-200 fill-current" viewBox="0 0 24 24">
+                <svg key={i} className="w-2 h-2 lg:w-2.5 lg:h-2.5 text-emerald-200 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2L2 22h20L12 2z" />
                 </svg>
               ))}
             </div>
 
             {/* Reach out paragraph */}
-            <p className="text-sm font-light text-emerald-50/90 leading-relaxed mt-2 max-w-sm">
+            <p className="text-[13px] lg:text-sm font-light text-emerald-50/90 leading-relaxed mt-1 lg:mt-2 max-w-sm">
               Reach out to us anytime and<br />
               we&apos;ll happily answer your questions.
             </p>
           </div>
 
           {/* Center Column - Empty (Contact moved to dedicated section) */}
-          <div className="lg:col-span-5"></div>
+          <div className="hidden lg:block lg:col-span-5"></div>
 
           {/* Right Column: Nav Links, Social Icons, Copyright (Cols 9-12) */}
-          <div className="lg:col-span-3 flex flex-col items-start lg:items-end justify-between self-stretch gap-10">
+          <div className="lg:col-span-3 flex flex-col items-start lg:items-end justify-between self-stretch gap-5 lg:gap-10 w-full lg:w-auto">
             
             {/* Navigation Links */}
-            <nav className="flex flex-col items-start lg:items-end gap-3 text-sm font-light text-emerald-50">
+            <nav className="grid grid-cols-2 gap-x-8 gap-y-2.5 w-full lg:flex lg:flex-col lg:items-end lg:w-auto text-sm font-light text-emerald-50">
               <Link href="#work" className="hover:text-white transition-colors">
                 Work
               </Link>
@@ -62,15 +62,15 @@ export default function Footer() {
             </nav>
 
             {/* Social Icons & Copyright */}
-            <div className="flex flex-col items-start lg:items-end gap-5">
+            <div className="flex flex-col items-start lg:items-end gap-3 lg:gap-5 w-full lg:w-auto">
               
               {/* Icons */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
+                  className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
                   aria-label="Instagram"
                 >
                   <span className="text-xs font-semibold">@</span>
@@ -80,7 +80,7 @@ export default function Footer() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
+                  className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
                   aria-label="LinkedIn"
                 >
                   <span className="text-xs font-semibold font-serif">in</span>
@@ -88,7 +88,7 @@ export default function Footer() {
 
                 <a
                   href="mailto:contact@studiomaterium.com"
-                  className="w-8 h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
+                  className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
                   aria-label="Email"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,7 +98,7 @@ export default function Footer() {
 
                 <a
                   href="tel:+1234567890"
-                  className="w-8 h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
+                  className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
                   aria-label="Phone"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

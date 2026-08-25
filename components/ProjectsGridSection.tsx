@@ -13,6 +13,90 @@ interface Project {
   details?: string;
 }
 
+/* Mobile: a thumbnail in the sticky rail. The active one dims, since the
+   detail for it is already open below. */
+function RailCard({
+  project,
+  active,
+  onSelect,
+}: {
+  project: Project;
+  active: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={`flex flex-col flex-shrink-0 snap-start w-[42%] text-left transition-opacity duration-300 ${
+        active ? 'opacity-40' : 'opacity-100'
+      }`}
+    >
+      <div className="relative w-full h-24 flex-shrink-0 overflow-hidden bg-slate-200">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <span className="block text-[10px] font-light text-emerald-500 uppercase tracking-wider mt-2">
+        {project.category}
+      </span>
+      <span className="block text-xs font-light text-slate-900 leading-snug mt-0.5">
+        {project.title}
+      </span>
+    </button>
+  );
+}
+
+/* Mobile: the selected project, opened below the rail. It sits in normal
+   page flow — no inner scroller — so the page scrolls and the sticky rail
+   stays reachable the whole way down. */
+function MobileDetail({ project }: { project: Project }) {
+  const images = project.images?.length ? project.images : [project.image];
+
+  return (
+    <div className="pt-7">
+      <span className="text-xs font-light text-emerald-500 uppercase tracking-wider">
+        {project.category}
+      </span>
+      <h3 className="text-2xl font-light text-slate-900 mt-2 mb-1">
+        {project.title}
+      </h3>
+      <p className="text-sm text-slate-600 font-light">{project.location}</p>
+
+      <p className="text-xs font-light text-slate-500 uppercase tracking-wider mt-7 mb-3">
+        Gallery
+      </p>
+      <div className="flex flex-col gap-4">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className="relative w-full aspect-[4/3] overflow-hidden bg-slate-200"
+          >
+            <img
+              src={img}
+              alt={`${project.title} — image ${idx + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
+      {project.details && (
+        <div className="mt-8">
+          <h4 className="text-sm font-light text-slate-900 uppercase tracking-wider mb-3">
+            About This Project
+          </h4>
+          <p className="text-sm font-light text-slate-700 leading-relaxed">
+            {project.details}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ProjectsGridSection() {
   const [projects, setProjects] = useState<Project[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -70,6 +154,21 @@ export default function ProjectsGridSection() {
         block: 'start'
       });
     }, 300);
+  };
+
+  const closeProject = () => {
+    setExpandedProjectId(null);
+    setImageScrollIndex(0);
+
+    // measure after the detail unmounts, and clear the fixed header
+    setTimeout(() => {
+      const el = sectionRef.current;
+      if (!el) return;
+      window.scrollTo({
+        top: window.scrollY + el.getBoundingClientRect().top - 96,
+        behavior: 'smooth',
+      });
+    }, 60);
   };
 
   const scrollToTop = () => {
@@ -235,7 +334,7 @@ export default function ProjectsGridSection() {
   if (projects.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="bg-white py-10 md:py-14 overflow-hidden">
+    <section ref={sectionRef} className="bg-white py-5 md:py-14 overflow-x-clip">
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -291,7 +390,48 @@ export default function ProjectsGridSection() {
           </p>
         </div>
 
-        <div className="relative -mx-6 sm:-mx-10 lg:-mx-16">
+        {/* Mobile: rail stays put at the top, the picked project opens
+            underneath it */}
+        <div className="md:hidden">
+          <div className="sticky top-[80px] z-30 bg-white pt-2 pb-3">
+            <div className="flex items-start gap-3 overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {projects.map((project) => (
+                <RailCard
+                  key={project.id}
+                  project={project}
+                  active={project.id === expandedProjectId}
+                  onSelect={() => setExpandedProjectId(project.id)}
+                />
+              ))}
+            </div>
+
+            {expandedProjectId !== null && (
+              <div className="flex justify-end pt-3">
+                <button
+                  type="button"
+                  onClick={closeProject}
+                  className="group inline-flex items-center gap-2 border border-slate-900 px-3 py-1.5 transition-colors duration-300 hover:bg-slate-900"
+                >
+                  <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-slate-900 transition-colors duration-300 group-hover:text-white">
+                    Close
+                  </span>
+                  <svg
+                    className="w-2 h-2 text-[#0f5339] transition-colors duration-300 group-hover:text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+
+          {expandedProject && <MobileDetail project={expandedProject} />}
+        </div>
+
+        <div className="hidden md:block relative -mx-6 sm:-mx-10 lg:-mx-16">
           <div
             ref={scrollContainerRef}
             className={`flex gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 hide-scrollbar ${
@@ -394,7 +534,7 @@ export default function ProjectsGridSection() {
                         </p>
                       </div>
 
-                      <div className="relative w-full h-56 md:h-64 overflow-hidden bg-slate-200 border border-slate-200 hover:border-slate-300 transition-all duration-300">
+                      <div className="relative mt-auto w-full h-36 sm:h-48 md:h-64 overflow-hidden bg-slate-200 border border-slate-200 hover:border-slate-300 transition-all duration-300">
                         <img
                           src={project.image}
                           alt={project.title}

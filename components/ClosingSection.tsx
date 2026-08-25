@@ -41,7 +41,7 @@ function Line({
 
 export default function ClosingSection() {
   return (
-    <section className="bg-white py-14 md:py-16 lg:py-20 border-t border-slate-100">
+    <section className="bg-white py-8 md:py-16 lg:py-20 border-t border-slate-100">
       <div className="container mx-auto px-6">
         <div className="max-w-[1100px] mx-auto text-center">
 

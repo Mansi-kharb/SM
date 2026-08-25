@@ -64,14 +64,14 @@ export default function ExpertiseSection() {
   const rightIndex = (activeIndex + 1) % items.length;
 
   return (
-    <section className="bg-white pt-12 md:pt-16 pb-8 md:pb-12 border-t border-slate-100 overflow-hidden">
+    <section className="bg-white pt-4 md:pt-16 pb-4 md:pb-12 border-t border-slate-100 overflow-hidden">
       {/* Header - Section Title */}
-      <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 mb-12">
+      <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 mb-4 md:mb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
           {/* Left Title Column - Responsive mobile typography */}
           <div className="md:col-span-8">
-            <h2 className="font-['Satoshi',sans-serif] font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.06] max-w-[541px]">
+            <h2 className="font-['Satoshi',sans-serif] font-medium sm:font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.06] max-w-[541px]">
               WE THINK BEYOND THE SPACE.
             </h2>
           </div>

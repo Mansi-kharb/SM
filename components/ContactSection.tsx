@@ -16,28 +16,32 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="bg-white py-0 md:py-0 overflow-hidden">
-      <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16 py-8 md:py-12">
+      <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16 py-5 md:py-12">
 
         {/* Main Grid - Content Left, Image Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-stretch">
 
           {/* Left Column - Header + Form */}
-          <div className="flex flex-col justify-center">
+          <div className="contents lg:flex lg:flex-col lg:justify-center">
             {/* Header */}
-            <div className="mb-8 md:mb-10">
+            <div className="order-1 lg:order-none">
               <p className="text-xs md:text-sm font-light text-emerald-600 uppercase tracking-wider mb-4">
                 GET IN TOUCH
               </p>
-              <h2 className="font-['Satoshi',sans-serif] text-4xl md:text-5xl font-light text-slate-900 mb-6 tracking-tight max-w-2xl">
-                Let's Build Something Extraordinary Together
+              <h2 className="font-['Satoshi',sans-serif] text-[26px] sm:text-4xl md:text-5xl font-light text-slate-900 mb-0 lg:mb-6 tracking-tight max-w-2xl">
+                Let&apos;s Build Something{' '}
+                <br className="sm:hidden" />
+                Extraordinary Together
               </h2>
-              <p className="text-sm md:text-base text-slate-600 font-light leading-relaxed max-w-2xl">
-                We're here to bring your vision to life. Reach out to discuss your project and how we can help.
-              </p>
             </div>
 
-            {/* Form Toggle Section */}
-            <div className="mt-4">
+            {/* Copy + form travel together, below the image on mobile */}
+            <div className="order-3 lg:order-none lg:contents">
+              <p className="text-sm md:text-base text-slate-600 font-light leading-relaxed max-w-2xl lg:mb-10">
+                We&apos;re here to bring your vision to life. Reach out to discuss your project and how we can help.
+              </p>
+
+              <div className="mt-6 lg:mt-4">
               {!isFormOpen ? (
                 /* CTA Button */
                 <button
@@ -85,11 +89,12 @@ export default function ContactSection() {
                   )}
                 </div>
               )}
+              </div>
             </div>
           </div>
 
           {/* Right Column - Image (Fixed Size) */}
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shadow-lg flex-shrink-0">
+          <div className="order-2 lg:order-none relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shadow-lg flex-shrink-0">
             <img
               src="/images/hero-archway.jpg"
               alt="Stone archway opening onto a living room in travertine, oak parquet and linen"

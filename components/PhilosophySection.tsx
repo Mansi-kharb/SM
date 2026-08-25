@@ -10,7 +10,7 @@ const REPLAY_MS = 6000;
 
 /* Fluid type so all three phrases always hold a single line */
 const LINE_TEXT =
-  "font-['Satoshi',sans-serif] text-[clamp(0.8rem,3.6vw,5.5rem)] font-light tracking-[0.04em] whitespace-nowrap leading-none";
+  "font-['Satoshi',sans-serif] text-[7.5vw] sm:text-[clamp(1.1rem,3.6vw,5.5rem)] font-light tracking-[0.04em] whitespace-nowrap leading-none";
 
 /* Triptych — one image per phrase in the line above:
    drawings -> materials -> finished work. */
@@ -40,7 +40,7 @@ function Arrow({ delay, show }: { delay: number; show: boolean }) {
           : { opacity: 0, scale: 0.2, rotate: -45 }
       }
       transition={{ duration: 0.7, delay, ease: EASE }}
-      className="flex-shrink-0"
+      className="flex-shrink-0 -rotate-90 sm:rotate-0"
     >
       <svg
         className="w-[0.52em] h-[0.52em] text-[#0f5339]"
@@ -82,14 +82,14 @@ export default function PhilosophySection() {
   }, [inView]);
 
   return (
-    <section className="bg-white pt-12 md:pt-16 lg:pt-20 pb-24 md:pb-32 overflow-hidden">
+    <section className="bg-white pt-12 md:pt-16 lg:pt-20 pb-10 sm:pb-20 md:pb-32 overflow-hidden">
       <div className="container mx-auto px-6">
 
         {/* Single line: WE DESIGN ◂ WE DETAIL ◂ WE DELIVER — replays every REPLAY_MS */}
         <div ref={lineRef} className="w-full flex items-center justify-center overflow-hidden">
           <div
             key={cycle}
-            className={`flex flex-row items-center justify-center gap-[0.35em] ${LINE_TEXT}`}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-[0.35em] ${LINE_TEXT}`}
           >
 
             {/* WE DESIGN - slides in from left */}
@@ -152,11 +152,11 @@ export default function PhilosophySection() {
 
       {/* Detail triptych — reveals once, then stays put */}
       <div className="container mx-auto px-6 mt-16 md:mt-24">
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-3 gap-2.5 sm:gap-6 md:gap-8">
           {BAND.map((item, i) => (
             <div
               key={item.src}
-              className={`group ${i === 1 ? 'sm:mt-10' : ''} ${i === 2 ? 'sm:mt-20' : ''}`}
+              className={`group ${i === 1 ? 'mt-4 sm:mt-10' : ''} ${i === 2 ? 'mt-8 sm:mt-20' : ''}`}
             >
               <div className="relative overflow-hidden aspect-[3/4] bg-slate-100">
                 <img

@@ -21,6 +21,7 @@ export default function ProjectsGridSection() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null);
+  const pinFrameRef = useRef<number | null>(null);
   const [imageScrollIndex, setImageScrollIndex] = useState(0);
   const [isAtBottom, setIsAtBottom] = useState(false);
 
@@ -141,22 +142,92 @@ export default function ProjectsGridSection() {
         expandedScrollRef.current.scrollTop = 0;
       }
 
+      // Vertical only — pinToCentre owns the horizontal axis while the
+      // card grows. Avoid scrollIntoView, which nudges both.
       setTimeout(() => {
-        const expandedCard = scrollContainerRef.current?.querySelector(
+        const card = scrollContainerRef.current?.querySelector(
           `[data-project-id="${expandedProjectId}"]`
-        ) as HTMLElement;
+        ) as HTMLElement | null;
+        if (!card) return;
 
-        if (expandedCard) {
-          // Simple native browser centering
-          expandedCard.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        }
-      }, 250);
+        window.scrollTo({
+          top: window.scrollY + card.getBoundingClientRect().top - 112,
+          behavior: 'smooth',
+        });
+      }, 60);
     }
   }, [expandedProjectId]);
+
+  useEffect(() => {
+    return () => {
+      if (pinFrameRef.current !== null) cancelAnimationFrame(pinFrameRef.current);
+    };
+  }, []);
+
+  // Bring a card's centre to the scrollport's centre.
+  const centreCard = (card: HTMLElement, smooth: boolean) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const delta =
+      cardRect.left -
+      containerRect.left -
+      (container.clientWidth - cardRect.width) / 2;
+
+    if (Math.abs(delta) < 0.5) return;
+    container.scrollTo({
+      left: container.scrollLeft + delta,
+      behavior: smooth ? 'smooth' : 'auto',
+    });
+  };
+
+  // Hold the card at the centre for every frame of its width transition,
+  // so growing outward never pushes it off-centre.
+  const pinToCentre = (card: HTMLElement, duration: number) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Per-frame writes must not be smoothed, or they queue up and stutter.
+    const previousBehavior = container.style.scrollBehavior;
+    container.style.scrollBehavior = 'auto';
+
+    let start: number | null = null;
+    const step = (now: number) => {
+      if (start === null) start = now;
+      centreCard(card, false);
+      if (now - start < duration) {
+        pinFrameRef.current = requestAnimationFrame(step);
+      } else {
+        container.style.scrollBehavior = previousBehavior;
+        pinFrameRef.current = null;
+      }
+    };
+    pinFrameRef.current = requestAnimationFrame(step);
+  };
+
+  // Centre first, expand second.
+  const openProject = (id: number) => {
+    setImageScrollIndex(0);
+
+    const container = scrollContainerRef.current;
+    const card = container?.querySelector(
+      `[data-project-id="${id}"]`
+    ) as HTMLElement | null;
+
+    if (!container || !card) {
+      setExpandedProjectId(id);
+      return;
+    }
+
+    centreCard(card, true);
+
+    window.setTimeout(() => {
+      setExpandedProjectId(id);
+      pinToCentre(card, 900);
+    }, 440);
+  };
 
   const expandedProject = projects.find(p => p.id === expandedProjectId);
   const projectImages = expandedProject?.images?.length ? expandedProject.images : [expandedProject?.image].filter(Boolean);
@@ -164,7 +235,7 @@ export default function ProjectsGridSection() {
   if (projects.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="bg-white py-16 md:py-24 overflow-hidden">
+    <section ref={sectionRef} className="bg-white py-10 md:py-14 overflow-hidden">
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -188,12 +259,10 @@ export default function ProjectsGridSection() {
 
         @keyframes expandCard {
           from {
-            opacity: 0.3;
-            transform: scale(0.95);
+            opacity: 0;
           }
           to {
             opacity: 1;
-            transform: scale(1);
           }
         }
 
@@ -207,7 +276,7 @@ export default function ProjectsGridSection() {
         }
 
         .expand-animation {
-          animation: expandCard 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          animation: expandCard 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -225,7 +294,9 @@ export default function ProjectsGridSection() {
         <div className="relative -mx-6 sm:-mx-10 lg:-mx-16">
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 sm:px-10 lg:px-16 hide-scrollbar"
+            className={`flex gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 hide-scrollbar ${
+              expandedProjectId !== null ? 'md:px-[16vw]' : 'sm:px-10 lg:px-16'
+            }`}
             style={{ scrollBehavior: 'smooth' }}
           >
             {projects.map((project) => {
@@ -237,8 +308,8 @@ export default function ProjectsGridSection() {
                   key={project.id}
                   data-project-id={project.id}
                   onDoubleClick={handleDoubleClick}
-                  className={`flex-shrink-0 group transition-all duration-500 ${
-                    isExpanded ? 'w-full md:w-3/4 mx-auto' : 'w-1/3 md:w-1/4'
+                  className={`flex-shrink-0 group transition-[width] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isExpanded ? 'w-full md:w-[70vw]' : 'w-1/3 md:w-1/4'
                   }`}
                 >
                   {isExpanded ? (
@@ -308,10 +379,7 @@ export default function ProjectsGridSection() {
                     </div>
                   ) : (
                     <div
-                      onClick={() => {
-                        setExpandedProjectId(project.id);
-                        setImageScrollIndex(0);
-                      }}
+                      onClick={() => openProject(project.id)}
                       className="flex flex-col h-full cursor-pointer"
                     >
                       <div className="pb-4 md:pb-5">

@@ -112,10 +112,11 @@ export default function Home() {
 
       <ProcessSection />
       <ExpertiseSection />
-      <TeamCareSection />
-      {/* Closing statement, ahead of the blog */}
+
+      {/* Closing statement, straight after the services */}
       <ClosingSection />
 
+      <TeamCareSection />
       <BlogSection />
       <ContactSection />
       <Footer />

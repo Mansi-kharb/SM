@@ -5,23 +5,22 @@ export default function ProcessSection() {
     {
       number: '01',
       title: 'Discover',
-      description: 'Initial consultation and creative ideation. We begin by listening — to your space, your goals, and the story you want your space to tell.',
+      description: 'Every meaningful space begins with understanding. We listen closely to your aspirations, functional needs, site context, and budget to establish a clear and purposeful design direction.',
     },
     {
       number: '02',
       title: 'Define',
-      description: 'Detailed planning and 3D visualization. We translate insights into structured parameters with realistic project visualization and approval.',
-      description2: 'Advanced 3D rendering for realistic project visualization.',
+      description: 'Ideas take form through thoughtful planning, material exploration, and detailed 3D visualisation. Together, we refine every element before moving towards execution.',
     },
     {
       number: '03',
       title: 'Design',
-      description: 'Material selection and execution planning. Curated selection of premium materials and finishes with comprehensive project implementation strategy.',
+      description: 'The vision evolves into a cohesive design through spatial planning, material selection, technical detailing, and execution strategy. Every decision is carefully considered for beauty, function, and longevity.',
     },
     {
       number: '04',
       title: 'Deliver',
-      description: 'With precision and passion, we turn every design into a finished reality that exceeds expectations. Complete project handover with quality assurance.',
+      description: 'We bring the approved design to life through coordinated execution, close supervision, and uncompromising attention to detail—delivering a refined space that remains true to the original vision.',
     },
   ];
 
@@ -35,11 +34,10 @@ export default function ProcessSection() {
           {/* Headline (Cols 1-4) - Exact Figma Box Specs: 419px x 240px */}
           <div className="lg:col-span-4 pt-2 pr-4">
             <h2 className="font-['Satoshi',sans-serif] text-3xl sm:text-4xl md:text-[40px] leading-[1.12] font-light text-slate-900 tracking-tight max-w-[419px]">
-              From Insight to<br />
-              Impact — <span className="text-[#a3a3a3] font-light">a journey<br />
-              shaped by intent,<br />
-              detail, and<br />
-              collaboration.</span>
+              A thoughtful journey{' '}
+              <span className="text-[#a3a3a3] font-light">
+                shaped by context, creativity, materiality, and collaboration.
+              </span>
             </h2>
           </div>
 

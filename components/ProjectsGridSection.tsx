@@ -216,8 +216,9 @@ export default function ProjectsGridSection() {
           <h2 className="font-['Satoshi',sans-serif] text-4xl md:text-5xl font-light text-slate-900 mb-2 tracking-tight">
             Our Projects
           </h2>
-          <p className="text-lg text-slate-600 font-light max-w-2xl">
-            Explore our diverse portfolio of design and construction projects.
+          <p className="text-lg text-slate-600 font-light max-w-3xl">
+            From the first line on a drawing to the final material installed on site,
+            we look at the complete picture.
           </p>
         </div>
 

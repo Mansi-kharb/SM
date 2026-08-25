@@ -10,42 +10,43 @@ export default function ExpertiseSection() {
     {
       id: 1,
       title: 'Architecture',
-      description: 'Innovative architectural designs that stand the test of time.',
+      description: 'Building design, planning and architectural expression.',
       type: 'image',
       image: '/images/Architecture.png',
     },
     {
       id: 2,
-      title: 'Residential',
-      description: 'Thoughtfully designed homes tailored to your lifestyle.',
+      title: 'Interior Design',
+      description: 'Spatial planning, materiality, detailing and bespoke interiors.',
       type: 'image',
       image: '/images/Residential.png',
     },
     {
       id: 3,
-      title: 'Office Design',
-      description: 'Economic and collaborative workplaces that foster productivity.',
-      type: 'image',
-      image: '/images/Office-Design.png',
-    },
-    {
-      id: 4,
-      title: 'Retail Design',
-      description: 'Designing retail spaces that attract, engage, and convert.',
+      title: 'Hospitality & Commercial',
+      description: 'Distinctive environments designed around experience and functionality.',
       type: 'image',
       image: '/images/Retail-Design.png',
     },
     {
-      id: 5,
-      title: 'Landscape',
-      description: 'Sustainable landscapes that connect architecture with nature.',
+      id: 4,
+      title: 'Residential',
+      description: 'Personalised spaces shaped around the way people live.',
       type: 'image',
       image: '/images/Landscape.png',
     },
     {
+      id: 5,
+      title: 'Design & Detailing',
+      description: 'Furniture, materials, lighting, junctions and the finer elements that bring a space together.',
+      type: 'image',
+      // TODO: swap for a real joinery / material detail shot
+      image: '/images/project-3.png',
+    },
+    {
       id: 6,
-      title: 'Turnkey Execution',
-      description: 'End-to-end project delivery with precision, quality, and timely execution.',
+      title: 'Execution & Coordination',
+      description: 'Design intent carried through with clarity from drawings to site.',
       type: 'image',
       image: '/images/Turnkey-Execution.png',
     },
@@ -69,9 +70,9 @@ export default function ExpertiseSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
           {/* Left Title Column - Responsive mobile typography */}
-          <div className="md:col-span-6">
-            <h2 className="font-['Satoshi',sans-serif] font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.0] max-w-[541px]">
-              Our Services
+          <div className="md:col-span-8">
+            <h2 className="font-['Satoshi',sans-serif] font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.06] max-w-[541px]">
+              WE THINK BEYOND THE SPACE.
             </h2>
           </div>
 
@@ -239,6 +240,9 @@ export default function ExpertiseSection() {
           <span className="font-['Satoshi',sans-serif] font-medium text-[24px] text-[#000000] leading-[1.0] tracking-normal inline-block">
             {items[activeIndex].title}
           </span>
+          <p className="font-['Satoshi',sans-serif] text-sm md:text-[15px] text-slate-500 font-light leading-relaxed max-w-[520px] mx-auto mt-3">
+            {items[activeIndex].description}
+          </p>
         </div>
       </div>
     </section>

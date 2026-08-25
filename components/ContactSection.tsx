@@ -42,7 +42,7 @@ export default function ContactSection() {
                 /* CTA Button */
                 <button
                   onClick={() => setIsFormOpen(true)}
-                  className="inline-flex items-center gap-2.5 group cursor-pointer px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-emerald-600 transition-all duration-300"
+                  className="inline-flex items-center gap-2.5 group cursor-pointer px-6 py-3 bg-slate-900 text-white rounded-none hover:bg-emerald-600 transition-all duration-300"
                 >
                   <span className="font-['Satoshi',sans-serif] text-xs sm:text-sm font-medium uppercase tracking-wider">
                     GET IN TOUCH
@@ -91,8 +91,8 @@ export default function ContactSection() {
           {/* Right Column - Image (Fixed Size) */}
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shadow-lg flex-shrink-0">
             <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
-              alt="Contact us"
+              src="/images/hero-archway.jpg"
+              alt="Stone archway opening onto a living room in travertine, oak parquet and linen"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>

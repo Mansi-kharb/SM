@@ -8,8 +8,10 @@ import ProcessSection from '@/components/ProcessSection';
 import ProjectsGridSection from '@/components/ProjectsGridSection';
 import ExpertiseSection from '@/components/ExpertiseSection';
 import AboutSection from '@/components/AboutSection';
+import ApproachSection from '@/components/ApproachSection';
 import TeamCareSection from '@/components/TeamCareSection';
 import BlogSection from '@/components/BlogSection';
+import ClosingSection from '@/components/ClosingSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { ProjectData } from '@/components/ProjectCard';
@@ -88,6 +90,8 @@ const DEFAULT_PROJECTS: ProjectData[] = [
 ];
 
 export default function Home() {
+  const [isPhilosophyOpen, setIsPhilosophyOpen] = useState(false);
+
   return (
     <main className="bg-white min-h-screen text-slate-900 font-sans antialiased">
       <Header />
@@ -95,13 +99,23 @@ export default function Home() {
       <PhilosophySection />
 
       {/* About Us Section right before Our Projects */}
-      <AboutSection />
+      <AboutSection
+        isPhilosophyOpen={isPhilosophyOpen}
+        onTogglePhilosophy={() => setIsPhilosophyOpen((open) => !open)}
+      />
+
+      {/* Studio philosophy — how the work gets made */}
+      <ApproachSection open={isPhilosophyOpen} />
 
       {/* Projects Grid Section - Big.dk Style */}
       <ProjectsGridSection />
 
       <ProcessSection />
       <ExpertiseSection />
+
+      {/* Closing statement, straight after the services */}
+      <ClosingSection />
+
       <TeamCareSection />
       <BlogSection />
       <ContactSection />

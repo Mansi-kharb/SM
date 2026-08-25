@@ -434,7 +434,7 @@ export default function ProjectsGridSection() {
         <div className="hidden md:block relative -mx-6 sm:-mx-10 lg:-mx-16">
           <div
             ref={scrollContainerRef}
-            className={`flex gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 hide-scrollbar ${
+            className={`flex items-start gap-6 md:gap-8 overflow-x-auto scroll-smooth pb-4 px-6 hide-scrollbar ${
               expandedProjectId !== null ? 'md:px-[16vw]' : 'sm:px-10 lg:px-16'
             }`}
             style={{ scrollBehavior: 'smooth' }}
@@ -522,7 +522,7 @@ export default function ProjectsGridSection() {
                       onClick={() => openProject(project.id)}
                       className="flex flex-col h-full cursor-pointer"
                     >
-                      <div className="pb-4 md:pb-5">
+                      <div className="pb-4 md:pb-5 md:min-h-[8.75rem]">
                         <span className="text-xs md:text-sm font-light text-emerald-500 uppercase tracking-wider">
                           {project.category}
                         </span>
@@ -534,7 +534,7 @@ export default function ProjectsGridSection() {
                         </p>
                       </div>
 
-                      <div className="relative mt-auto w-full h-36 sm:h-48 md:h-64 overflow-hidden bg-slate-200 border border-slate-200 hover:border-slate-300 transition-all duration-300">
+                      <div className="relative w-full h-36 sm:h-48 md:h-64 overflow-hidden bg-slate-200 border border-slate-200 hover:border-slate-300 transition-all duration-300">
                         <img
                           src={project.image}
                           alt={project.title}

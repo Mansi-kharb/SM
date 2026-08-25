@@ -52,7 +52,7 @@ export default function ApproachSection({ open = false }: { open?: boolean }) {
           transition={{ duration: 0.7, ease: EASE }}
           className="bg-white overflow-hidden"
         >
-          <div ref={ref} className="container mx-auto px-6 sm:px-10 lg:px-16 pt-10 pb-8 md:pt-14 md:pb-10">
+          <div ref={ref} className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 pt-10 pb-8 md:pt-14 md:pb-10">
             <div className="max-w-[1180px] mx-auto">
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">

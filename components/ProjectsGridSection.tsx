@@ -414,6 +414,29 @@ export default function ProjectsGridSection() {
             })}
           </div>
 
+          {/* Gutter beside the expanded card. Hover shows the hint, double
+              click goes back. md and up only — below that the card is
+              full width, so there is no gutter (and no hover either). */}
+          {expandedProjectId !== null &&
+            (['left', 'right'] as const).map((side) => (
+              <div
+                key={side}
+                onDoubleClick={handleDoubleClick}
+                title="Double click to go back"
+                className={`group/gutter hidden md:block absolute top-0 bottom-0 w-[15vw] z-20 cursor-pointer ${
+                  side === 'left' ? 'left-0' : 'right-0'
+                }`}
+              >
+                {/* sticky so the hint stays with the viewport however far
+                    down the gallery the reader has scrolled */}
+                <span className="sticky top-[45vh] block text-center px-4 text-[11px] font-light uppercase tracking-[0.18em] text-slate-400 leading-relaxed opacity-0 group-hover/gutter:opacity-100 transition-opacity duration-300 select-none">
+                  Double click
+                  <br />
+                  to go back
+                </span>
+              </div>
+            ))}
+
           {canScrollLeft && (
             <button
               onClick={() => scroll('left')}

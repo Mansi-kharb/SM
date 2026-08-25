@@ -11,7 +11,7 @@ export default function AboutSection({
 }: AboutSectionProps) {
   return (
     <section id="about" className="bg-white pt-4 md:pt-6 pb-4 md:pb-6">
-      <div className="container mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Text */}
           <div>

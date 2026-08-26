@@ -10,12 +10,50 @@ interface ContactFormProps {
   darkMode?: boolean;
 }
 
+type Field = 'name' | 'email' | 'phone' | 'message';
+type FormValues = Record<Field, string>;
+type FieldErrors = Partial<Record<Field, string>>;
+
+/* type="email" on its own lets "you@gmail" through — it never requires a
+   TLD. The thank-you mail goes to whatever is typed here, so a typo becomes
+   a bounce the visitor never finds out about. */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+const PHONE_RE = /^[0-9+][0-9\s()-]{6,19}$/;
+
+function validate(values: FormValues): FieldErrors {
+  const errors: FieldErrors = {};
+
+  if (!values.name.trim()) errors.name = 'Please enter your name.';
+  else if (values.name.trim().length < 2) errors.name = 'Please enter your full name.';
+
+  if (!values.email.trim()) errors.email = 'Please enter your email address.';
+  else if (!EMAIL_RE.test(values.email.trim()))
+    errors.email = 'That does not look like a valid email address.';
+
+  /* Optional — only checked once something has actually been typed. */
+  if (values.phone.trim() && !PHONE_RE.test(values.phone.trim()))
+    errors.phone = 'Please enter a valid phone number.';
+
+  if (!values.message.trim()) errors.message = 'Please tell us about your project.';
+  else if (values.message.trim().length < 10)
+    errors.message = 'Please add a little more detail.';
+
+  return errors;
+}
+
 function ContactForm({ darkMode = false }: ContactFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormValues>({
     name: '',
     email: '',
     phone: '',
     message: '',
+  });
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<Record<Field, boolean>>({
+    name: false,
+    email: false,
+    phone: false,
+    message: false,
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -23,11 +61,27 @@ function ContactForm({ darkMode = false }: ContactFormProps) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const next = { ...formData, [name as Field]: value };
+    setFormData(next);
+    /* Re-check while typing, but only on fields already left once — calling
+       an email invalid on the first keystroke just reads as nagging. */
+    if (touched[name as Field]) setErrors(validate(next));
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const name = e.target.name as Field;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    setErrors(validate(formData));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const found = validate(formData);
+    setErrors(found);
+    setTouched({ name: true, email: true, phone: true, message: true });
+    if (Object.keys(found).length > 0) return;
+
     setLoading(true);
     setError('');
 
@@ -41,6 +95,8 @@ function ContactForm({ darkMode = false }: ContactFormProps) {
       if (response.ok) {
         setSuccess(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
+        setTouched({ name: false, email: false, phone: false, message: false });
+        setErrors({});
         setTimeout(() => setSuccess(false), 3000);
       } else {
         setError('Failed to send message. Please try again.');
@@ -53,50 +109,101 @@ function ContactForm({ darkMode = false }: ContactFormProps) {
     }
   };
 
-  const inputClasses = darkMode
-    ? 'w-full px-4 py-3 rounded bg-emerald-700 placeholder-emerald-200 border-0 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500'
-    : 'w-full px-4 py-3 rounded bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black';
+  /* The border/ring colour is kept out of the base string so the invalid
+     state replaces it instead of fighting it — two conflicting Tailwind
+     classes resolve by stylesheet order, not by order in the className. */
+  const inputBase = darkMode
+    ? 'w-full px-4 py-3 rounded bg-emerald-700 placeholder-emerald-200 border-0 text-white focus:outline-none focus:ring-2'
+    : 'w-full px-4 py-3 rounded bg-white border focus:outline-none focus:ring-2';
+
+  const showsError = (field: Field) => Boolean(touched[field] && errors[field]);
+
+  const fieldClasses = (field: Field) =>
+    showsError(field)
+      ? `${inputBase} ${darkMode ? 'ring-2 ring-red-300 focus:ring-red-300' : 'border-red-500 focus:ring-red-500'}`
+      : `${inputBase} ${darkMode ? 'focus:ring-emerald-500' : 'border-gray-300 focus:ring-black'}`;
+
+  const fieldError = (field: Field) =>
+    showsError(field) ? (
+      <p
+        id={`${field}-error`}
+        className={`mt-1.5 text-xs font-light ${darkMode ? 'text-red-200' : 'text-red-600'}`}
+      >
+        {errors[field]}
+      </p>
+    ) : null;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-        className={inputClasses}
-      />
+    /* noValidate hands validation to validate() above, so every field
+       explains itself in one voice instead of native browser bubbles. */
+    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <div>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          aria-invalid={showsError('name')}
+          aria-describedby={showsError('name') ? 'name-error' : undefined}
+          className={fieldClasses('name')}
+        />
+        {fieldError('name')}
+      </div>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        className={inputClasses}
-      />
+      <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          aria-invalid={showsError('email')}
+          aria-describedby={showsError('email') ? 'email-error' : 'email-hint'}
+          className={fieldClasses('email')}
+        />
+        {fieldError('email')}
+        {!showsError('email') && (
+          <p
+            id="email-hint"
+            className={`mt-1.5 text-xs font-light ${darkMode ? 'text-emerald-200/80' : 'text-gray-500'}`}
+          >
+            We&apos;ll send your confirmation here.
+          </p>
+        )}
+      </div>
 
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone Number"
-        value={formData.phone}
-        onChange={handleChange}
-        className={inputClasses}
-      />
+      <div>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone Number (optional)"
+          value={formData.phone}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          aria-invalid={showsError('phone')}
+          aria-describedby={showsError('phone') ? 'phone-error' : undefined}
+          className={fieldClasses('phone')}
+        />
+        {fieldError('phone')}
+      </div>
 
-      <textarea
-        name="message"
-        placeholder="Your Message"
-        rows={5}
-        value={formData.message}
-        onChange={handleChange}
-        required
-        className={inputClasses}
-      ></textarea>
+      <div>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows={5}
+          value={formData.message}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          aria-invalid={showsError('message')}
+          aria-describedby={showsError('message') ? 'message-error' : undefined}
+          className={fieldClasses('message')}
+        ></textarea>
+        {fieldError('message')}
+      </div>
 
       <button
         type="submit"
@@ -153,7 +260,7 @@ export default function ContactSection() {
               <p className="text-xs md:text-sm font-light text-emerald-600 uppercase tracking-wider mb-4">
                 GET IN TOUCH
               </p>
-              <h2 className="font-['Satoshi',sans-serif] text-[26px] sm:text-4xl md:text-5xl font-light text-slate-900 mb-0 lg:mb-6 tracking-tight max-w-2xl">
+              <h2 className="font-serif text-[26px] sm:text-4xl md:text-5xl font-medium text-slate-900 mb-0 lg:mb-6 tracking-tight max-w-2xl">
                 Let&apos;s Build Something{' '}
                 <br className="sm:hidden" />
                 Extraordinary Together

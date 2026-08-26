@@ -60,7 +60,7 @@ export default function HeroSection() {
       <div className="absolute bottom-14 sm:bottom-16 md:bottom-20 left-5 sm:left-12 md:left-16 right-5 sm:right-auto z-10 text-white">
         
         {/* Headline Box: Responsive font size & width */}
-        <h1 className="font-['Satoshi',sans-serif] text-3xl sm:text-5xl md:text-[52px] font-light leading-[1.08] sm:leading-[1.02] tracking-tight text-white mb-4 sm:mb-6 text-left max-w-[522px] drop-shadow-md">
+        <h1 className="font-serif text-3xl sm:text-5xl md:text-[52px] font-medium leading-[1.08] sm:leading-[1.02] tracking-tight text-white mb-4 sm:mb-6 text-left max-w-[522px] drop-shadow-md">
           Designing Extraordinary Spaces
         </h1>
 

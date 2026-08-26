@@ -80,9 +80,7 @@ export default function Header() {
                     ? isScrolled
                       ? 'px-4 py-2 rounded-full bg-[#0f5339] text-white hover:bg-emerald-900 font-medium shadow-sm'
                       : 'px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 font-medium'
-                    : isScrolled
-                    ? 'text-slate-700 hover:text-[#0f5339]'
-                    : 'text-white/90 hover:text-white'
+                    : 'text-slate-900 hover:text-[#0f5339]'
                 }`}
               >
                 {/* Small mint triangle accent on hover */}

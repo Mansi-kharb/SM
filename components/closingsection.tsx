@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* leading-[1.2] leaves room for descenders so the mask never clips them */
 const STATEMENT =
-  'block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight leading-[1.2]';
+  'block font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[1.2]';
 
 /* Each line rises out from behind a mask */
 function Line({

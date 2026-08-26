@@ -23,7 +23,7 @@ export default function AboutSection({
           {/* Text — `contents` on mobile lets the image grid slot in
               between the heading and the body copy */}
           <div className="contents md:block">
-            <h2 className="order-1 text-[27px] sm:text-4xl md:text-5xl font-light md:mb-8 tracking-wide leading-[1.15]">
+            <h2 className="order-1 font-serif text-[27px] sm:text-4xl md:text-5xl font-medium md:mb-8 tracking-wide leading-[1.15]">
               Spaces Designed With Intention.
             </h2>
 
@@ -172,7 +172,7 @@ export function ApproachSection({ open = false }: { open?: boolean }) {
                 <div className="contents lg:col-span-7 lg:flex lg:flex-col lg:justify-center">
                   <motion.h2
                     {...rise(0.25)}
-                    className="order-1 lg:order-none text-4xl md:text-5xl font-light text-slate-900 tracking-wide leading-[1.15]"
+                    className="order-1 lg:order-none font-serif text-4xl md:text-5xl font-medium text-slate-900 tracking-wide leading-[1.15]"
                   >
                     From Concept to Completion.
                   </motion.h2>
@@ -272,7 +272,7 @@ export function TeamCareSection() {
           
           {/* Left Content Column */}
           <div className="contents lg:col-span-5 lg:flex lg:flex-col lg:justify-center lg:pl-8 lg:pr-4">
-            <h2 className="order-1 lg:order-none text-[26px] sm:text-4xl md:text-5xl lg:text-[48px] font-extralight text-slate-900 tracking-normal leading-[1.12] lg:mb-6">
+            <h2 className="order-1 lg:order-none font-serif text-[26px] sm:text-4xl md:text-5xl lg:text-[48px] font-medium text-slate-900 tracking-normal leading-[1.12] lg:mb-6">
               Behind Every Space Is A Team That Cares.
             </h2>
 

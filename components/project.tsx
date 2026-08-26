@@ -60,7 +60,7 @@ function MobileDetail({ project }: { project: Project }) {
       <span className="text-xs font-light text-emerald-500 uppercase tracking-wider">
         {project.category}
       </span>
-      <h3 className="text-2xl font-light text-slate-900 mt-2 mb-1">
+      <h3 className="font-serif text-2xl font-medium text-slate-900 mt-2 mb-1">
         {project.title}
       </h3>
       <p className="text-sm text-slate-600 font-light">{project.location}</p>
@@ -381,7 +381,7 @@ export default function ProjectsGridSection() {
       <div className="w-full px-4 sm:px-6 lg:px-8">
 
         <div className="mb-12 md:mb-16 max-w-full mx-auto">
-          <h2 className="font-['Satoshi',sans-serif] text-4xl md:text-5xl font-light text-slate-900 mb-2 tracking-tight">
+          <h2 className="font-serif text-4xl md:text-5xl font-medium text-slate-900 mb-2 tracking-tight">
             Our Projects
           </h2>
           <p className="text-lg text-slate-600 font-light max-w-3xl">
@@ -458,7 +458,7 @@ export default function ProjectsGridSection() {
                         <span className="text-xs md:text-sm font-light text-emerald-500 uppercase tracking-wider">
                           {project.category}
                         </span>
-                        <h3 className="text-2xl md:text-3xl font-light text-slate-900 mt-3 mb-2">
+                        <h3 className="font-serif text-2xl md:text-3xl font-medium text-slate-900 mt-3 mb-2">
                           {project.title}
                         </h3>
                         <p className="text-sm md:text-base text-slate-600 font-light">

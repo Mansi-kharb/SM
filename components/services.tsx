@@ -75,7 +75,7 @@ export default function ExpertiseSection() {
           
           {/* Left Title Column - Responsive mobile typography */}
           <div className="md:col-span-8">
-            <h2 className="font-['Satoshi',sans-serif] font-medium sm:font-light text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.06] max-w-[541px]">
+            <h2 className="font-serif font-medium text-2xl sm:text-4xl md:text-[48px] text-slate-900 tracking-tight sm:tracking-normal leading-[1.12] sm:leading-[1.06] max-w-[541px]">
               WE THINK BEYOND THE SPACE.
             </h2>
           </div>
@@ -317,9 +317,9 @@ export function ProcessSection() {
           
           {/* Headline (Cols 1-4) - Exact Figma Box Specs: 419px x 240px */}
           <div className="lg:col-span-4 pt-2 pr-4">
-            <h2 className="font-['Satoshi',sans-serif] text-3xl sm:text-4xl md:text-[40px] leading-[1.12] font-light text-slate-900 tracking-tight max-w-[419px]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-[40px] leading-[1.12] font-medium text-slate-900 tracking-tight max-w-[419px]">
               A thoughtful journey{' '}
-              <span className="text-[#a3a3a3] font-light">
+              <span className="text-[#a3a3a3] font-normal">
                 shaped by context, creativity, materiality, and collaboration.
               </span>
             </h2>

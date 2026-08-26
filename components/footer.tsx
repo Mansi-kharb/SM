@@ -3,6 +3,18 @@
 import React from 'react';
 import Link from 'next/link';
 
+/* Mirrors the header nav. Every href has to match a real section id on the
+   page - "#work" and "#people" matched nothing, so those two links were
+   dead: clicking them scrolled nowhere. */
+const footerNav = [
+  { label: 'About Us', href: '#about' },
+  { label: 'Our Projects', href: '#projects' },
+  { label: 'Process', href: '#process' },
+  { label: 'Services', href: '#services' },
+  { label: 'Blogs', href: '#blogs' },
+  { label: 'Contact', href: '#contact' },
+];
+
 export default function Footer() {
   return (
     <footer id="footer" className="bg-[#0f5b43] text-white py-8 md:py-20 border-t border-emerald-900/40 relative">
@@ -47,18 +59,15 @@ export default function Footer() {
             
             {/* Navigation Links */}
             <nav className="grid grid-cols-2 gap-x-8 gap-y-2.5 w-full lg:flex lg:flex-col lg:items-end lg:w-auto text-sm font-light text-emerald-50">
-              <Link href="#work" className="hover:text-white transition-colors">
-                Work
-              </Link>
-              <Link href="#people" className="hover:text-white transition-colors">
-                People
-              </Link>
-              <Link href="#about" className="hover:text-white transition-colors">
-                About us
-              </Link>
-              <Link href="#blogs" className="hover:text-white transition-colors">
-                Blogs
-              </Link>
+              {footerNav.map(item => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
 
             {/* Social Icons & Copyright */}
@@ -67,7 +76,7 @@ export default function Footer() {
               {/* Icons */}
               <div className="flex items-center gap-2.5">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/studiomaterium"
                   target="_blank"
                   rel="noreferrer"
                   className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
@@ -77,7 +86,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/studiomaterium"
                   target="_blank"
                   rel="noreferrer"
                   className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
@@ -87,7 +96,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="mailto:contact@studiomaterium.com"
+                  href="mailto:info@studiomaterium.in"
                   className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border border-emerald-300/40 flex items-center justify-center text-emerald-100 hover:bg-white hover:text-[#0f5b43] transition-all"
                   aria-label="Email"
                 >

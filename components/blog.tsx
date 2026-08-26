@@ -39,8 +39,8 @@ export default function BlogSection() {
     <section id="blogs" className="bg-white py-5 md:py-12 px-6 md:px-12 font-sans border-t border-slate-100">
       <div className="max-w-[1720px] mx-auto">
         {/* Section Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight leading-tight mb-12">
-          Discover More on <span className="text-slate-400 font-light">Our Blog</span>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-slate-900 tracking-tight leading-tight mb-12">
+          Discover More on <span className="text-slate-400 font-normal">Our Blog</span>
         </h2>
 
         {/* Responsive Layout: Touch Horizontal Scroll on Mobile (< sm), 4 Column Grid on Desktop (lg) */}
